@@ -1,21 +1,16 @@
-## W
-
-W est un framework minimaliste. Il suit les structures et les grand thèmes des frameworks PHP OO MVC actuels, tout en en facilitant l'approche. 
+## LOOKINGFORGROUP.WIN
 
 ---
+Bienvenue sur le github du projet lookingforgroup.win
+Ce site est le projet de fin d'études pour l'école Webforce 3.
 
-####Pour télécharger le framework et en consulter la documentation :
+---
+Lookingforgroup.win est un site de rencontre autour du thème des jeux vidéos et basé sur le framework W (framework développé par Webforce 3).
+Nous utilisons les API Geonames et giantbomb.
 
-1. Dans un terminal : 
+---
+#### auteurs:
 
-  ```
-  cd c:/xampp/htdocs
-  composer create-project webforce3/w nom_de_mon_projet
-  ```
-
-2. Naviguez vers http://localhost/nom_de_mon_projet/docs/tuto/
-
-
-####Auteurs :
-* Guillaume Sylvestre : [@gsylvestre](https://github.com/gsylvestre) (auteur original)
-* Axel Wargnier : [@axessweb](https://github.com/axessweb)
+*Esther Doan
+*Emilie Hersant
+*Franck Vallortigara
