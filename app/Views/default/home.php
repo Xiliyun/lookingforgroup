@@ -1,7 +1,15 @@
-<?php $this->layout('layout', ['title' => 'Accueil']) ?>
+<?php $this->layout('layout', ['title' => 'Looking For Group']) ?>
+
+<!-- PAGE D'ACCUEIL -->
 
 <?php $this->start('main_content') ?>
-	<h2>Let's code.</h2>
-	<p>Vous avez atteint la page d'accueil. Bravo.</p>
-	<p>Et maintenant, RTFM dans <strong><a href="../docs/tuto/" title="Documentation de W">docs/tuto</a></strong>.</p>
+
+<form>
+	<label>Déjà inscrit?</label>
+	<input type="button" name="connexion" value="Connexion">
+
+	<label>1ère visite?</label>
+	<input type="button" name="inscription" value="Inscription">
+</form>
+
 <?php $this->stop('main_content') ?>

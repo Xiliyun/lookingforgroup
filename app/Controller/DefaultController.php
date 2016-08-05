@@ -15,9 +15,5 @@ class DefaultController extends Controller
 		$this->show('default/home');
 	}
 	
-	public function nosecoles()
-	{
-		$this->show('default/nos-ecoles');
-	}
 
 }
