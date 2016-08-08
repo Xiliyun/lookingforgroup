@@ -1,26 +1,122 @@
-html, body {
-	font-family: Consolas, monaco, monospace;
-	background-color: #272822;
-	color: #F8F8F2;
+
+@import 'https://fonts.googleapis.com/css?family=Arimo|Fjalla+One';
+
+@import url(https://fonts.googleapis.com/css?family=Arimo);
+
+
+
+body{
+	font-family: 'Fjalla One', sans-serif;
+	margin:0;
+	padding:0;
+
+	background-color:#2f353b;
 }
 
-.container {
-	margin: 50px;
+
+#imgacc{
+	width:100%;
 }
 
-a {
-	text-decoration: none;
-	color: #A6E22E;
+
+// header{
+// 	position:fixed;
+// 	top:0;
+// 	height:10em;
+// 	background-color:#2f353b;
+// 	width:100%;
+// 	overflow:auto;
+// }
+
+// main {
+// 	width:100%
+// }
+
+// #inscriptionConnexion{
+// 	background-color:#2f353b;
+// 	width:100vw;
+// 	height:100vh;
+// }
+
+
+
+// #formconnexion{
+// 	width:800px;
+// 	margin:0 auto;
+// 	padding-top:2em;
+// 	border-radius: 10px 10px 10px 10px;
+// 	background-color:#47d9bf;
+// }
+
+// .form-group label {
+// 	font-size:1.5em;
+// }
+
+
+// .container{
+// 	bakcground-color:#2f353b;
+// 	padding-top:25em;
+// }
+
+// #baseline {
+// 	background-color:#47d9bf;
+// 	padding-top:20px;
+// 	padding-bottom:10px;
+// 	text-align:center;
+// 	color:#fff;
+
+// }
+
+// #baseline p {
+// 	font-size:2em;
+// 	line-height:2em;
+
+// }
+
+//  #btn-landingpage {
+//  	bacground-color:#47d9bf;
+//  	margin-left:1.5em;
+//  	margin-right:1.5em;
+// 	position:relative;
+// 	top:1em;
+// 	float:right;
+
+
+//  }
+
+#imgacc{
+	width:100%;
 }
 
-a:hover {
-	color: #F92672;
-}
+// footer{
+// 	background-color:#2f353b;
+// 	position:fixed; 
+// 	color:#fff;
+// 	text-align:center;
+// 	width:100%;
+// 	padding-top:5em;
+// 	font-family: 'Arimo', sans-serif;
+	
+// }
 
-h1 {
-	color: #F92672;
-}
+// #footerformulaire{
+// 	padding-top:27em;
+// }
 
-h2 {
-	color: #66D9EF;
-}
+// .list-group{
+// 	float:right;
+// 	margin-right: 18em;
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
