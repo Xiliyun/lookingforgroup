@@ -6,31 +6,111 @@
 <div class="container">
 	<form class="form-horizontal" id="formconnexion">
 			<fieldset>
-				<!-- Text input-->
+				
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="username">Pseudo</label>  
 				  <div class="col-md-4">
-				  <input id="username" name="username" type="text" placeholder="Pseudo" class="form-control input-md">
-				    
+				  <input id="username" name="username" type="text" placeholder="Pseudo" class="form-control input-md">   
 				  </div>
 				</div>
 
-				<!-- Password input-->
 				<div class="form-group">
-				  <label class="col-md-4 control-label" for="pwd">Mot de Passe</label>
+				  <label class="col-md-4 control-label" for="email">Email</label>  
 				  <div class="col-md-4">
-				    <input id="pwd" name="pwd" type="password" placeholder="Mot de passe" class="form-control input-md">
-				    
+				  <input id="email" name="email" type="text" placeholder="Email" class="form-control input-md">   
 				  </div>
 				</div>
 
-				<!-- Button -->
 				<div class="form-group">
-				  <label class="col-md-4 control-label" for="envoyer"></label>
+				  <label class="col-md-4 control-label" for="password">Mot de passe</label>  
 				  <div class="col-md-4">
-				    <button id="envoyer" name="envoyer" class="btn btn-default btn-block">Envoyer</button>
+				  <input id="password" name="password" type="text" placeholder="Mot de passe" class="form-control input-md">   
 				  </div>
 				</div>
+
+
+				<!-- Champ date_joined caché -->
+				<input id="date_joined" name="date_joined" type="hidden" >   
+		
+
+				<!-- Champ role caché -->
+				<input  name="role" type="hidden" >   
+
+
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="dob">Date de naissance</label>  
+				  <div class="col-md-4">
+				  <input id="dob" name="dob" type="date"  class="form-control input-md">   
+				  </div>
+				</div>
+
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="lastname">Nom</label>  
+				  <div class="col-md-4">
+				  <input id="lastname" name="lastname" type="text" placeholder="Nom" class="form-control input-md">   
+				  </div>
+				</div>
+
+
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="firstname">Prénom</label>  
+				  <div class="col-md-4">
+				  <input id="firstname" name="firstname" type="text" placeholder="Prénom" class="form-control input-md">   
+				  </div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="gender">Civilité</label>
+						<div class="form-group">
+							<label class="col-md-4 control-label" class="radio-inline">
+								<input type="radio" id="gender"  name="gender" value="m" checked>Homme
+							</label>
+							<label class="radio-inline">
+								<input type="radio" id="gender" name="gender" value="f">Femme
+							</label>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="friendship">Je sui ici pour :</label>
+						<div class="form-group">
+							<label class="col-md-4 control-label" class="radio-inline">
+								<input type="radio" id="friendship"  name="love" value="1" checked>Rencontre amoureuse
+							</label>
+							<label class="radio-inline">
+								<input type="radio" id="friendship" name="friendship" value="1">Rencontre geek
+							</label>
+					</div>
+				</div>
+
+					<div class="form-group">
+					<label class="col-md-4 control-label" for="gender">Intéressé par : </label>
+						<div class="form-group">
+							<label class="col-md-4 control-label" class="radio-inline">
+								<input type="radio" id="gender"  name="gender" value="m" checked>Homme
+							</label>
+							<label class="radio-inline">
+								<input type="radio" id="gender" name="gender" value="f">Femme
+							</label>
+					</div>
+				</div>
+			
+
+			<!-- Champs ville -->
+
+
+
+
+
+
+
+
+
+
+
+
+				
+				
 			</fieldset>
 		</form>
 </div>
@@ -38,3 +118,7 @@
 
 
 <?php $this->stop('main_content') ?>
+
+
+
+

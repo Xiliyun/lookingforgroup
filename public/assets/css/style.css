@@ -1,12 +1,8 @@
 
-@import 'https://fonts.googleapis.com/css?family=Arimo|Fjalla+One';
-
-@import url(https://fonts.googleapis.com/css?family=Arimo);
-
-
+@import 'https://fonts.googleapis.com/css?family=Roboto';
 
 body{
-	font-family: 'Fjalla One', sans-serif;
+font-family: 'Roboto', sans-serif;
 	margin:0;
 	padding:0;
 
@@ -32,25 +28,27 @@ body{
 // 	width:100%
 // }
 
-// #inscriptionConnexion{
-// 	background-color:#2f353b;
-// 	width:100vw;
-// 	height:100vh;
-// }
+#inscriptionConnexion{
+	background-color:#2f353b;
+	width:100vw;
+	height:100vh;
+	margin-top:15em;
+}
 
 
 
-// #formconnexion{
-// 	width:800px;
-// 	margin:0 auto;
-// 	padding-top:2em;
-// 	border-radius: 10px 10px 10px 10px;
-// 	background-color:#47d9bf;
-// }
+#formconnexion{
+	width:800px;
+	margin:0 auto;
+	margin-bottom:4em;
+ 	padding-top:2em;
+ 	border-radius: 10px 10px 10px 10px;
+ 	background-color:#47d9bf;
+ }
 
-// .form-group label {
-// 	font-size:1.5em;
-// }
+ .form-group label {
+ 	font-size:1em;
+ }
 
 
 // .container{
@@ -88,26 +86,19 @@ body{
 	width:100%;
 }
 
-// footer{
-// 	background-color:#2f353b;
-// 	position:fixed; 
-// 	color:#fff;
-// 	text-align:center;
-// 	width:100%;
-// 	padding-top:5em;
-// 	font-family: 'Arimo', sans-serif;
+footer{
+	background-color:#2f353b;
+	position:fixed; 
+	color:#fff;
+	text-align:center;
+	width:100%;
+
+
 	
-// }
+}
 
-// #footerformulaire{
-// 	padding-top:27em;
-// }
 
-// .list-group{
-// 	float:right;
-// 	margin-right: 18em;
 
-// }
 
 
 
