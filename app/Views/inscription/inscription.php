@@ -4,7 +4,7 @@
 
 <?php $this->start('main_content') ?>
 <div class="container">
-	<form class="form-horizontal" id="formconnexion">
+	<form class="form-horizontal" id="formconnexion" method="POST">
 			<fieldset>
 				
 				<div class="form-group">
@@ -82,7 +82,7 @@
 							</label>
 					</div>
 				</div>
-
+<!-- 
 					<div class="form-group">
 					<label class="col-md-4 control-label" for="gender">Intéressé par : </label>
 						<div class="form-group">
@@ -94,7 +94,7 @@
 							</label>
 					</div>
 				</div>
-			
+			 -->
 
 			<!-- Champs ville -->
 
@@ -107,7 +107,7 @@
 
 
 
-
+			<input type="submit">
 
 				
 				

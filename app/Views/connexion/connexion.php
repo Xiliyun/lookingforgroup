@@ -4,7 +4,7 @@
 
 <?php $this->start('main_content') ?>
 <div class="container">
-	<form class="form-horizontal" id="formconnexion">
+	<form class="form-horizontal" id="formconnexion" method="POST" action="">
 			<fieldset>
 				<!-- Text input-->
 				<div class="form-group">
@@ -19,16 +19,16 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="pwd">Mot de Passe</label>
 				  <div class="col-md-4">
-				    <input id="pwd" name="pwd" type="password" placeholder="Mot de passe" class="form-control input-md">
+				    <input id="pwd" name="password" type="password" placeholder="Mot de passe" class="form-control input-md">
 				    
 				  </div>
 				</div>
 
 				<!-- Button -->
 				<div class="form-group">
-				  <label class="col-md-4 control-label" for="envoyer"></label>
+				  <label class="col-md-4 control-label" for="connexion"></label>
 				  <div class="col-md-4">
-				    <button id="envoyer" name="envoyer" class="btn btn-default btn-block">Envoyer</button>
+				    <input type="submit" id="connexion" name="connexion" value="Se connecter" class="btn btn-default btn-block">
 				  </div>
 				</div>
 			</fieldset>
