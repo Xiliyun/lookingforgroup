@@ -22,11 +22,9 @@
 		<?= $this->section('main_content') ?>
 		</section>
 
-		<footer id="footerformulaire">
+		<footer>
 			<p id="coyright">&copy; lookingforgroup.com - Esther Doan - Franck Vallortigara - Emilie Hersant</p>
 		</footer>
-
-
 
 </main>
 	
@@ -37,5 +35,11 @@
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+
+
+	<script src="../"></script>
 </body>
 </html>
