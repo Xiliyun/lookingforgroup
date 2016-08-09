@@ -138,7 +138,6 @@ class InscriptionController extends Controller {
 					"gender"				=> "test",
 					"friendship"			=> "test",
 					"love"					=> "test",
-					"orientation" 			=> null,
 
 					);
 

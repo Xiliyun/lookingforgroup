@@ -4,7 +4,8 @@
 
 <?php $this->start('main_content') ?>
 <div class="container">
-	<form class="form-horizontal" id="formconnexion" method="POST">
+	<form class="form-horizontal" id="formconnexion" method="POST"> 
+	<!-- TODO envoyer le formulaire sur une page -->
 			<fieldset>
 				
 				<div class="form-group">
@@ -24,17 +25,16 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="password">Mot de passe</label>  
 				  <div class="col-md-4">
-				  <input id="password" name="password" type="text" placeholder="Mot de passe" class="form-control input-md">   
+				  <input id="password" name="password" type="password" placeholder="Mot de passe" class="form-control input-md">   
 				  </div>
 				</div>
 
 
 				<!-- Champ date_joined caché -->
-				<input id="date_joined" name="date_joined" type="hidden" >   
+				<input id="date_joined" name="date_joined" value="" type="hidden" >   
 		
-
-				<!-- Champ role caché -->
-				<input  name="role" type="hidden" >   
+				<!-- Champ role caché  -->
+				<input name="role" type="hidden" value="0">   
 
 
 				<div class="form-group">
@@ -82,19 +82,10 @@
 							</label>
 					</div>
 				</div>
-<!-- 
-					<div class="form-group">
-					<label class="col-md-4 control-label" for="gender">Intéressé par : </label>
-						<div class="form-group">
-							<label class="col-md-4 control-label" class="radio-inline">
-								<input type="radio" id="gender"  name="gender" value="m" checked>Homme
-							</label>
-							<label class="radio-inline">
-								<input type="radio" id="gender" name="gender" value="f">Femme
-							</label>
-					</div>
-				</div>
-			 -->
+
+
+
+
 
 			<!-- Champs ville -->
 
@@ -118,6 +109,10 @@
 
 
 <?php $this->stop('main_content') ?>
+
+<?php $this->start('customScript') ?>
+	
+<?php $this->stop('customScript') ?>
 
 
 
