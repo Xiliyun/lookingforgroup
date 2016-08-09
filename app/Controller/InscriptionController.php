@@ -137,14 +137,9 @@ class InscriptionController extends Controller {
 					"lastname"				=> "test",
 					"gender"				=> "test",
 					"friendship"			=> "test",
-					"love"				=> "test",
+					"love"					=> "test",
 					"orientation" 			=> null,
-					"id_battlenet"			=> null,
-					"id_psn"				=> null,
-					"id_lol" 				=> null,
-					"id_xbox_live"			=> null,
-					"id_steam" 				=> null,
-					"description"			=> null
+
 					);
 
 
