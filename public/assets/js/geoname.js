@@ -107,16 +107,16 @@ function postalCodeLookup() {
   aObj.addScriptTag();
 }
 
-// set the country of the user's ip (included in geonamesData.js) as selected country 
-// in the country select box of the address form
-function setDefaultCountry() {
-  var countrySelect = document.getElementById("countrySelect");
-  for (i=0;i< countrySelect.length;i++) {
-    // the javascript geonamesData.js contains the countrycode
-    // of the userIp in the variable 'geonamesUserIpCountryCode'
-    if (countrySelect[i].value == geonamesUserIpCountryCode) {
-      // set the country selectionfield
-      countrySelect.selectedIndex = i;
-    }
-  }
-}
+// // set the country of the user's ip (included in geonamesData.js) as selected country 
+// // in the country select box of the address form
+// function setDefaultCountry() {
+//   var countrySelect = document.getElementById("countrySelect");
+//   for (i=0;i< countrySelect.length;i++) {
+//     // the javascript geonamesData.js contains the countrycode
+//     // of the userIp in the variable 'geonamesUserIpCountryCode'
+//     if (countrySelect[i].value == geonamesUserIpCountryCode) {
+//       // set the country selectionfield
+//       countrySelect.selectedIndex = i;
+//     }
+//   }
+// }
