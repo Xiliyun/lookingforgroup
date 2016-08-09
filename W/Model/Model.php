@@ -221,10 +221,10 @@ abstract class Model
 	public function insert(array $data, $stripTags = true)
 	{
 
-		$colNames = array_keys($data);
-		$colNamesString = implode(', ', '`'.$colNames.'`');
+		/*$colNames = array_keys($data);
+		$colNamesString = implode(', ', '`'.$colNames.'`');*/
 
-		$sql = 'INSERT INTO ' . $this->table . ' (' . $colNamesString . ') VALUES (';
+		$sql = 'INSERT INTO ' . $this->table . ' VALUES (';
 		foreach($data as $key => $value){
 			$sql .= ":$key, ";
 		}

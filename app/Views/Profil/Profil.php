@@ -1,6 +1,9 @@
-<?php $this->layout('layout', ['title' => 'Looking For Group']) ?>
+<?php $this->layout('layoutNavigation', ['title' => 'Lookingforgroup.win/Profil']) ?>
 
-<!-- PAGE D'ACCUEIL -->
+<!-- Page profil -->
+
+<?php $this->start('nav_otherPages') ?>
+<?php $this->stop('nav_otherPages') ?>
 
 <?php $this->start('main_content') ?>
 

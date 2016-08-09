@@ -1,6 +1,8 @@
-<?php $this->layout('layout', ['title' => 'Looking For Group']) ?>
+<?php $this->layout('layoutNavigation', ['title' => 'Lookingforgroup.win/Recherche']) ?>
 
-<!-- PAGE D'ACCUEIL -->
+<!-- Page de recherche -->
+<?php $this->start('nav_otherPages') ?>
+<?php $this->stop('nav_otherPages') ?>
 
 <?php $this->start('main_content') ?>
 
