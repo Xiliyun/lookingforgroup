@@ -21,8 +21,7 @@ class userConnexionModel extends \W\Security\AuthentificationModel {
 				$user["lastname"],
 				$user["gender"],
 				$user["friendship"],
-				$user["love"],
-				$user["orientation"],
+				$user["love"]
 		);
 
 		return $objetUser;
