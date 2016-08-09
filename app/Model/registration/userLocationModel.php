@@ -1,7 +1,7 @@
 <?php 
 namespace Model\Registration;
 
-class UserLocationModel extends \W\Model\Model {
+class UserLocation extends \W\Model\Model {
 
 	
 }

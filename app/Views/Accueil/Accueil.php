@@ -1,6 +1,19 @@
-<?php $this->layout('layout', ['title' => 'Looking For Group']) ?>
+<?php $this->layout('layoutNavigation', ['title' => 'Lookingforgroup.win/Accueil']) ?>
 
-<!-- PAGE D'ACCUEIL -->
+
+<!-- Page d'accueil -->
+
+<?php $this->start('nav_otherPages') ?>
+<?php $this->stop('nav_otherPages') ?>
+
+<div class="space"></div>
+
+<?php $this->start('nav_cote') ?>
+<?php $this->stop('nav_cote') ?>
+
+
+
+
 
 <?php $this->start('main_content') ?>
 
