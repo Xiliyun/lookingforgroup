@@ -1,9 +1,11 @@
-<?php $this->layout('layoutConnexionInscription') ?>
+<?php $this->layout('layout', ['title' => 'Formulaire de connexion']) ?>  ?>
+
+
 
 <!-- Page de connexion -->
 
 <?php $this->start('main_content') ?>
-<div class="container">
+<div class="containerForm">
 	<form class="form-horizontal" id="formconnexion" method="POST" action="">
 			<fieldset>
 				<!-- Text input-->
