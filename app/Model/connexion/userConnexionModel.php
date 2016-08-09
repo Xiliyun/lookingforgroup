@@ -23,12 +23,6 @@ class userConnexionModel extends \W\Security\AuthentificationModel {
 				$user["friendship"],
 				$user["love"],
 				$user["orientation"],
-				$user["id_battlenet"],
-				$user["id_psn"],
-				$user["id_lol"],
-				$user["id_xbox_live"],
-				$user["id_steam"],
-				$user["description"]
 		);
 
 		return $objetUser;

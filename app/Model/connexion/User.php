@@ -19,13 +19,6 @@ class User {
 	private $_love;
 	private $_orientation;
 
-	// champs non obligatoires TODO : TROUVER QUAND OU COMMENT LES ENTRER EN BASE
-	private $_id_battlenet;
-	private $_id_psn;
-	private $_id_lol;
-	private $_id_xbox_live;
-	private $_id_steam;
-	private $_description;
 
 
 	// constructeur des champs obligatoires
@@ -43,12 +36,7 @@ class User {
 						$_friendship,
 						$_love,
 						$_orientation,
-						$_id_battlenet,
-						$_id_psn,
-						$_id_lol,
-						$_id_xbox_live,
-						$_id_steam,
-						$_description
+
 						)
 	{
 		$this->_id_user		=			$_id_user;
@@ -64,12 +52,6 @@ class User {
 		$this->_friendship	=			$_friendship;
 		$this->_love		=			$_love;
 		$this->_orientation	=			$_orientation;
-		$this->_id_battlenet= 			$_id_battlenet;
-		$this->_id_psn		=  			$_id_psn;
-		$this->_id_lol		=			$_id_lol;
-		$this->_id_xbox_live=			$_id_xbox_live;
-		$this->_id_steam	=			$_id_steam;
-		$this->_description	=			$_description;
 	}
 
 
