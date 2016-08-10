@@ -1,4 +1,4 @@
-<?php $this->layout('layoutConnexionInscription', ['title' => 'inscription']) ?>
+<?php $this->layout('layout', ['title' => 'inscription']) ?>
 
 <!-- Page d'inscription' -->
 

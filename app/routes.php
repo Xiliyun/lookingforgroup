@@ -3,6 +3,8 @@
 	$w_routes = array(
 		['GET', '/', 'Default#home', 'default_home'],
 		['GET|POST', '/connexion', 'Connexion#connexion', 'connexion_connexion'],
+		['GET|POST', '/deconnexion', 'Deconnexion#deconnexion', 'deconnexion_deconnexion'],
+
 		['GET|POST', '/inscription', 'Inscription#inscription', 'inscription_inscription'],
 
 		['GET|POST','/inscription/confirmation', 'Inscription#confirmation', 'inscription_confirmation'],
