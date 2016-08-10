@@ -34,32 +34,34 @@
 </div>
 
 <div id=bloc-connect-home>
-	
 
-	<div id="logo">
-		
-		<img src="<?= $this->assetUrl('img/logo.jpg');?>" >
+
+	<div id="bloc-boutons-home">
+		<p>Déjà membre : </p>
+		<a href="<?= $this->url('connexion_connexion') ?>">
+		<input type="submit" name="connexion" value="Connexion" class="btn btn-default"></a>
+
+		<p>Première visite : </p>
+		<a href="<?= $this->url('inscription_inscription') ?>">
+		<input type="submit" name="inscription" value="Inscription" class="btn btn-default"></a>
 	</div>
+
+
+
 	
 
-	<div id="baseline"> Un site de rencontre (amitié et/ou amoureuse) orienté sur les goûts en jeux vidéo et à caractère communautaire.</div> 
+	<div id="logo" class="img-responsive">	
+		<img src="<?= $this->assetUrl('img/logo-OK.svg');?>" >
+	</div>
 
 	
-<div id="boutons-home">
-		<form class="form-group" role="form" >
-			<label for="connexion">Déjà membre</label>
-			<a href="<?= $this->url('connexion_connexion') ?>">
-			<input type="submit" name="connexion" value="Connexion" class="btn btn-default"></a>
 
-			<label for="inscription">1ère visite</label>
-			<a href="<?= $this->url('inscription_inscription') ?>">
-			<input type="submit" name="inscription" value="Inscription" class="btn btn-default"></a>
-		</form>
-	</div> 
+<div class="clear"></div>
+
 </div>
 		
 		
-	
+
 
 
 
