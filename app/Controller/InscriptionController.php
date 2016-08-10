@@ -2,7 +2,7 @@
 namespace Controller;
 
 use \W\Controller\Controller;
-use Model\Registration\UserModel;
+use Model\Registration\UserRegistrationModel;
 use Model\Registration\UserLocationModel;
 use DateTime;
 
@@ -21,7 +21,7 @@ class InscriptionController extends Controller {
 			/************************************************************/
 
 
-				$dbUser = new UserModel;
+				$dbUser = new UserRegistrationModel;
 				$dbUser->setTable("user");
 				$dbUser->setPrimaryKey('id_user');
 

@@ -38,6 +38,9 @@ class ConnexionController extends Controller
 
 						//print_r($_SESSION);
 
+						// franck
+						$this->redirectToRoute('accueil_accueil');
+
 					}
 				}
 		}
@@ -48,3 +51,4 @@ class ConnexionController extends Controller
 	
 
 }
+
