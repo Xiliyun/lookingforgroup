@@ -15,7 +15,8 @@ class InscriptionController extends Controller {
 
 		$errors = array();
 
-		if ($_POST) {
+		if($_POST) {
+			if($_POST["inscrire"]) {
 			/**************************************************************/
 			/////// ETAPE 1 : INSERTION DES DONNEES EN TABLE USER /////////
 			/************************************************************/
@@ -218,8 +219,9 @@ class InscriptionController extends Controller {
 
 
 			//$this->redirectToRoute('inscription_confirmation');
-
+		}
 		} // END IF POST
+
 		
 		$this->show('inscription/inscription', ["errors" => $errors] );
 
@@ -229,7 +231,7 @@ class InscriptionController extends Controller {
 			$this->show('inscription/confirmation');
 			
 	}
-
+	
 
 }
 

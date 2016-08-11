@@ -19,6 +19,8 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
       <link rel="stylesheet" href="<?= $this->assetUrl('css/style-landing.css') ?>"> 
+      <link rel="stylesheet" href="<?= $this->assetUrl('css/style-dropdown-connexion.css') ?>"> 
+
   </head>
   
   <body>
@@ -88,7 +90,7 @@
 	<footer>
 		<div class="container">
 			<div class="row">
-				<p><?= date('Y') ?> | &copy; lookingforgroup | Esther Doan - Emilie Hersant - Franck Vallortigara </p>
+              <?= $this->insert('templates/footer/simple') ?>
 			</div>
 		</div>
 	</footer>

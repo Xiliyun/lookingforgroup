@@ -22,24 +22,45 @@
   </head>
   
   <body>
+  <div id="wrapper">
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <div class="container">
+            <div class="container-fluid">
+              <?= $this->insert('templates/header/main') ?>
+              </div>
+          </div>
+      </nav>
+  </div>
 
-    <nav> 
-        <?= $this->section('nav_homepage') ?>
-    </nav>
-  
-  	<section>
-  			<?= $this->section('main_content') ?>
-  	</section>
+    <div class="container">
+      <div class="row">
+          
 
-  		<footer>
-        <?= $this->section('footer') ?>
-  		</footer>
+
+
+      </div>
+    </div>
+
+
+
+
+
+
+  <footer>
+    <div class="container">
+      <div class="row">
+          <?= $this->insert('templates/footer/simple') ?>
+      </div>
+    </div>
+  </footer>
 
 
 
 <!-- Script -->
 
 <?= $this->section('customScript') ?>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 </body>
 </html>

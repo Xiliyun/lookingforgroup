@@ -1,31 +1,5 @@
 @import 'https://fonts.googleapis.com/css?family=Roboto';
 
-/*NAV BAR*/
-
-
-/*Module de connexion*/
-#login-dp{
-    min-width: 250px;
-    padding: 14px 14px 0;
-    overflow:hidden;
-    background-color:rgba(200,200,200,.2);
-}
-
-
-#login-dp .bottom{
-    background-color:rgba(100,100,100,.2);
-    border-top:1px solid #333;
-    clear:both;
-    padding:14px;
-}
-#login-dp .social-buttons{
-    margin:12px 0    
-}
-#login-dp .form-group {
-    margin-bottom: 10px;
-}
-
-
 
 
 

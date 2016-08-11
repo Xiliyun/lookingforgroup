@@ -1,37 +1,41 @@
 <?php $this->layout('layoutProfil', ['title' => 'Lookingforgroup.win/Profil']) ?>
+<?php 
+
+	// une condition comme ça pour l'image de profil
+				// $avatar = base_url() . "images/avatar.png";
+				
+				// if(($res[0]->thumb_url == "" || $res[0]->photostatus == 0) && $res[0]->gender == 0) {
+				// 	$avatar = base_url() . "images/avatar.png";
+				// } else if(($res[0]->thumb_url == "" || $res[0]->photostatus == 0) && $res[0]->gender == 1) {
+				// 	$avatar = base_url() . "images/avatar.png";
+				// } else if($res[0]->thumb_url != "") {
+				// 	$avatar = $res[0]->thumb_url;
+				// }
+// DEFINITION DE TOUTES LES VARIABLES DE L'UTILISATEUR :
+
+print_r($user);
+print_r($userInfo);
+print_r($userLocation);
+
+// table user
+$username = $user['username'];
+
+$userDob = $user['dob'];
+$userAge =DateTime::createFromFormat('Y-m-d', $userDob)->diff(new DateTime('now'))->y;
+
+$gender = $user['gender'];
+
+// table location
+$city = $userLocation['city'];
+$cp = $userLocation['postal_code'];
+$country = $userLocation['country'];
+
+ ?>
+
+
 
 <!-- Page profil -->
 
-<?php $this->start('nav_main') ?>
-
-    <div class="navbar-header">
-        <a class="navbar-brand" href="#">LOGO ICI?</a>
-    </div>
-
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li><a href="">Accueil</a></li>
-						<li><a href="">Recherche</a></li>
-						<li><a href=""></a></li>
-						<li><a href="<?= $this->url('deconnexion_deconnexion') ?>"><input type="submit" id="deconnexion" name="deconnexion" value="Se deconnecter" class="btn btn-default btn-block"></a></li>
-
-					</ul>
-
-					<ul class="nav navbar-nav navbar-right">
-						
-						<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Espace membre<span class="caret"></span></a>
-
-							<ul class="dropdown-menu">
-								<li></li>
-								<li></li>
-							</ul>
-
-					    </li>
-					</ul>	
-				</div>
-
-<?php $this->stop('nav_main') ?>
 
 
 
@@ -48,6 +52,7 @@
 
 <?php $this->start('profil-gauche') ?>
 	
+
 	<!-- photo utilisateur -->
 
 	<div class="col-xs-7 col-md-12">
@@ -56,27 +61,23 @@
 	<!-- username -->
 	<div class="col-xs-5 col-md-12">
 		<div class="profil-username">
-			<h3><?php echo $user['username'];?></h3>
+			<h3><?= $username?></h3>
 		</div>
 	<!-- age -->
 		<div class="profil-age">
-			<p>Age : <?php
-			$userDob = $user['dob'];
-			echo " (".DateTime::createFromFormat('Y-m-d', $userDob)->diff(new DateTime('now'))->y." ans)";
-			 // a faire : calculer l'âge (DateTime::createFromFormat('Y-m-d', $userDob)->diff(new DateTime('now'))->y);
-			 ?></p>
+			<p><?= $userAge ?> ans</p>
 		</div>	
 		<!-- sexe -->
 		<div class="profil-sexe">
-			<p>sexe : 
-			<?php if($user["sexe"] == "h") { echo "homme";} elseif($user["sexe" =="f"]) { echo "femme";}?>	 	
+			<p>
+			<?php if($gender == "m") { echo "homme";} elseif($gender == "f") { echo "femme";}?>	 	
 			</p>
 		</div>	
 
 	<!-- ville -->
 		<div class="profil-ville">
-			<p>ville : 
-			<?php echo $user["city"]." (".$user["code_postal"].")"; ?>	 	
+			<p>
+			<?= $city .' - '. $cp ?>
 			</p>
 		</div>	
 
@@ -84,8 +85,20 @@
 <?php $this->stop('profil-gauche') ?>
 
 
+<?php $this->start('profil-droite-nav') ?>
+  <li role="presentation" class="active"><a href="#">Home</a></li>
+  <li role="presentation"><a href="#">Profile</a></li>
+  <li role="presentation"><a href="#">Messages</a></li>
+<?php $this->stop('profil-droite-nav') ?>
 
-<?php $this->start('profil-droite') ?>
+<?php $this->start('profil-droite-content') ?>
+
+<?php 
+print_r($user);
+print_r($userInfo);
+print_r($userLocation);
+
+ ?>
 
 <h3>ICI LES ONGLETS AFFICHANT LES INFORMATIONS DU PROFIL : Général / amis / Photos</h3>
 <div>

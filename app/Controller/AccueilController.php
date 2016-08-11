@@ -14,15 +14,13 @@ class AccueilController extends Controller
 	 */
 	public function accueil()
 	{
-		$db = new MembresModel;
-		//ICI IL FAUT FAIRE UN INNERJOIN REPRENNANT TOUTES LES INFOS
-		$db->setTable('test');
-		// $db->setPrimaryKey('id_user');
+		// AUTHORISE L'ACCES DU SITE AUX UTILISATEURS CONNECTES UNIQUEMENT (role 0)
+		$this->allowTo(0);
+		$user = $this->getUser();
 
 
-		$TousLesMembres = $db->findAll();
 
-		$this->show('accueil/accueil', ['all_users'=>$TousLesMembres]);
+		$this->show('accueil/accueil', ['user' => $user]);
 
 	}
 	
