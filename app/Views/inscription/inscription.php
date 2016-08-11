@@ -178,7 +178,7 @@
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="inscription"></label>
 				<div class ="col-md-4">
-					<input type="submit" value="S'inscrire" name="inscription" class="btn btn-default btn-block">	
+					<input type="submit" value="S'inscrire" name="inscrire" id="inscription" class="btn btn-default btn-block">	
 				</div>	
 			</div>
 			
@@ -195,9 +195,6 @@
 
 <?php $this->start('customScript') ?>
 
-	<script type="text/javascript" src="http://api.geonames.org/export/geonamesData.js?username=estheremiliefranck"></script>
-	<script src="<?= $this->assetUrl('js/geoname.js') ?>"></script>
-	<script src="<?= $this->assetUrl('js/jsr_class.js') ?>"></script>
 
 <?php $this->stop('customScript') ?>
 
