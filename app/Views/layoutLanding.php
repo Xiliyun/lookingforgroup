@@ -25,8 +25,7 @@
 	<div id="wrapper">
 	    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	        <div class="container">
-	        	<div class="container-fluid">
-	            <?= $this->section('nav_homepage') ?>
+	            <?= $this->insert('templates/header/default') ?>
 	            </div>
 	        </div>
 	    </nav>
@@ -57,20 +56,32 @@
 	<div class="container bloc-1">
 		<div class="row">
 			<div class="col-md-12">
+					<?= $this->section('content_block-1') ?>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!-- BLOC 2 -->
+
+	<div class="container bloc-2">
+		<div class="row">
+			<div class="col-md-12">
 				<div class="col-md-4">
-					<?= $this->section('content_block-1-gauche') ?>
+					<?= $this->section('content_block-2-gauche') ?>
 				</div>
 				<div class="col-md-4">
-					<?= $this->section('content_block-1-centre') ?>
+					<?= $this->section('content_block-2-centre') ?>
 				</div>
 				<div class="col-md-4">
-					<?= $this->section('content_block-1-droite') ?>
+					<?= $this->section('content_block-2-droite') ?>
 				</div>
 			</div>
 		</div>
 	</div>
 
 
+    
     
   </div>	    
 
@@ -87,6 +98,7 @@
 <!-- Script -->
 
 <?= $this->section('customScript') ?>
-
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 </html>
