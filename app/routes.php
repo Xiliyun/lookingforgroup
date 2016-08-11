@@ -2,6 +2,9 @@
 	
 	$w_routes = array(
 		['GET', '/', 'Default#home', 'default_home'],
+		['GET|POST', '/', 'Connexion#header_default_connexion', 'default_connexion'],
+
+		
 		['GET|POST', '/connexion', 'Connexion#connexion', 'connexion_connexion'],
 		['GET|POST', '/deconnexion', 'Deconnexion#deconnexion', 'deconnexion_deconnexion'],
 

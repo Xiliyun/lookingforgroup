@@ -1,20 +1,6 @@
 <?php $this->layout('layoutLanding', ['title' => 'Lookingforgroup.win']) ?>  ?>
 
 <!-- Homepage -->
-<?php $this->start('nav_homepage') ?>
-
-    <div class="navbar-header">
-        <a class="navbar-brand" href="#">Lookingforgroup.win</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-    	<ul class="nav navbar-nav navbar-right">
-    		<li><a class="" href="<?= $this->url('connexion_connexion') ?>">Connexion membre</a></li>
-	    </ul>
-
-
-    </div><!--/.navbar-collapse -->
-
-<?php $this->stop('nav_homepage') ?>
 
 <?php $this->start('content_gauche') ?>
 	
@@ -42,7 +28,7 @@
 		<div>
 			<p>Première visite ? </p>
 			<a href="<?= $this->url('inscription_inscription') ?>">
-			<input type="submit" name="inscription" value="Inscription" class="btn btn-default btn-lg btn-block"></a>
+			<input type="submit" name="inscription" value="Inscription" class="btn btn-lg btn-block" id="btnInscription"></a>
 		
 			<p>Déjà membre ?
 			<a href="<?= $this->url('connexion_connexion') ?>"> Se connecter </a>
@@ -54,24 +40,43 @@
 <?php $this->stop('content_droite') ?>
 
 
-<?php $this->start('content_block-1-gauche') ?> 
+
+
+
+
+
+
+
+<!-- MAIN CONTENT -->
+<?php $this->start('content_block-1') ?> 
+	<h2>
+		BIENVENUE SUR LOOKING FOR GROUP 
+	</h2>
+<?php $this->stop('content_block-1') ?>
+
+
+
+
+
+
+<?php $this->start('content_block-2-gauche') ?> 
 
 	<h2>Rencontrez d'autres gamers !</h2>
 	<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt maiores reprehenderit temporibus labore, et ratione commodi, repudiandae blanditiis nam earum, omnis quam asperiores culpa dolores fuga. Nisi odio, atque accusamus.</div>
-<?php $this->stop('content_block-1-gauche') ?>
+<?php $this->stop('content_block-2-gauche') ?>
 
 
-<?php $this->start('content_block-1-centre') ?> 
+<?php $this->start('content_block-2-centre') ?> 
 	<h2>Trouvez des partenaires de jeux !</h2>
 
 	<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt maiores reprehenderit temporibus labore, et ratione commodi, repudiandae blanditiis nam earum, omnis quam asperiores culpa dolores fuga. Nisi odio, atque accusamus.</div>
-<?php $this->stop('content_block-1-centre') ?>
+<?php $this->stop('content_block-2-centre') ?>
 
 
-<?php $this->start('content_block-1-droite') ?> 
+<?php $this->start('content_block-2-droite') ?> 
 
 	<h2>Partagez votre passion !</h2>
 	<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt maiores reprehenderit temporibus labore, et ratione commodi, repudiandae blanditiis nam earum, omnis quam asperiores culpa dolores fuga. Nisi odio, atque accusamus.</div>
-<?php $this->stop('content_block-1-droite') ?>
+<?php $this->stop('content_block-2-droite') ?>
 
 
