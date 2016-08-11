@@ -1,12 +1,13 @@
-<?php $this->layout('layout', ['title' => 'Formulaire de connexion']) ?>  ?>
+<?php $this->layout('layoutInscriptionConnexion', ['title' => 'Formulaire de connexion']) ?>  
 
 
 
 <!-- Page de connexion -->
 
-<?php $this->start('main_content') ?>
-<div class="containerForm">
-	<form class="form-horizontal" id="formconnexion" method="POST" action="">
+<?php $this->start('content_form') ?>
+
+<div id="container">
+	<form class="form-horizontal"  method="POST" action="">
 			<fieldset>
 				<!-- Text input-->
 				<div class="form-group">
@@ -39,4 +40,4 @@
 
 
 
-<?php $this->stop('main_content') ?>
+<?php $this->stop('content_form') ?>
