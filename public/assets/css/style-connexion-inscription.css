@@ -1,0 +1,14 @@
+body{
+	background-color:#333333;
+	margin:0;
+	padding:0;
+}
+
+#container {
+	width:60%;
+	background-color:#47d9bf;
+	border-radius: 15px 15px 15px 15px; 
+	padding:2em;
+	margin:0 auto;
+	
+}
