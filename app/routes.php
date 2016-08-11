@@ -9,8 +9,8 @@
 
 		['GET|POST','/inscription/confirmation', 'Inscription#confirmation', 'inscription_confirmation'],
 
-		['GET','/mon-profil/', 'Profil#monprofil', 'profil_profil'],
-		['GET','/recherche/', 'Recherche#marecherche', 'recherche_marecherche'],
+		['GET','/mon-profil', 'Profil#monprofil', 'profil_profil'],
+		['GET','/recherche', 'Recherche#marecherche', 'recherche_marecherche'],
 		['GET','/accueil', 'Accueil#accueil', 'accueil_accueil'],
 
 		

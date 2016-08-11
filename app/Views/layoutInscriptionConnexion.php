@@ -21,10 +21,15 @@
       <link rel="stylesheet" href="<?= $this->assetUrl('css/style-connexion-inscription.css') ?>"> 
   </head>
 <body>
+
+
 <!-- Fond vert formulaire de connexion et inscription -->
-	<div >
-		<?= $this->section('content_form') ?>
-	</div>
+<div >
+	<?= $this->section('content_form') ?>
+</div>
+
+
+
 
 
 

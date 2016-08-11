@@ -1,6 +1,22 @@
 <?php $this->layout('layoutInscriptionConnexion', ['title' => 'Formulaire d\'inscription']) ?>
-
 <!-- Page d'inscription' -->
+
+<?php $this->start('nav_homepage') ?>
+
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">Lookingforgroup.win</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+    	<ul class="nav navbar-nav navbar-right">
+    		<li><a class="" href="<?= $this->url('connexion_connexion') ?>">Connexion membre</a></li>
+	    </ul>
+
+
+    </div><!--/.navbar-collapse -->
+
+<?php $this->stop('nav_homepage') ?>
+
+
 
 <?php $this->start('content_form') ?>
 <div id="container">
@@ -12,39 +28,43 @@
 					<label class="col-md-4 control-label" for="username">Pseudo</label> 
 					<div class="col-md-4"> 
 						<input class="form-control input-md" id="username" name="username" type="text" placeholder="Pseudo" value="<?php if(isset($_POST["username"])) echo $_POST["username"]; ?>"> 
-					</div>
+						<p class="help-block"><?php if(isset($errors["username"])) echo $errors["username"]; ?></p>
+					</div>			
 				</div>
 
-				<div class="errors"><?php if(isset($errors["username"])) echo $errors["username"]; ?></div>  
+				
 
 				
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="email">Email</label>
 					<div class="col-md-4">   
 						<input class="form-control input-md" id="email" name="email" type="text" placeholder="Email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>"> 
+						<p class="help-block"><?php if(isset($errors["email"])) echo $errors["email"]; ?></p>  
 					</div>  	
 				</div>
 
-				<div class="errors"><?php if(isset($errors["email"])) echo $errors["email"]; ?></div>  
+				
 				
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="password">Mot de passe</label>
 					<div class="col-md-4">  
 						<input class="form-control input-md" id="password" name="password" type="password" placeholder="min 6 caractères, 1 chiffre et 1 caractère spécial" value="<?php if(isset($_POST["password"])) echo $_POST["password"]; ?>"> 
+						<p class="help-block"><?php if(isset($errors["password"])) echo $errors["password"]; ?></p>  
 					</div>  
 				</div>
 				
-				<div class="errors"><?php if(isset($errors["password"])) echo $errors["password"]; ?></div>  
+				
 				
 				
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="passwordConfirm">Confirmation de mot de passe</label> 
 					<div class="col-md-4"> 
 						<input class="form-control input-md" id="passwordConfirm" name="passwordConfirm" type="password" placeholder="min 6 caractères, 1 chiffre et 1 caractère spécial" value=""> 
+						<p class="help-block"><?php if(isset($errors["passwordConfirm"])) echo $errors["passwordConfirm"]; ?></p>
 					</div>  
 				</div>
 				
-				<div class="errors"><?php if(isset($errors["passwordConfirm"])) echo $errors["passwordConfirm"]; ?></div>  
+				  
 
 
 				<!-- Champ date_joined caché -->
@@ -58,28 +78,31 @@
 					<label class="col-md-4 control-label" for="dob">Date de naissance</label> 
 					<div class="col-md-4"> 
 						<input class="form-control input-md" id="dob" name="dob" type="date" value="<?php if(isset($_POST["dob"])) echo $_POST["dob"]; ?>">   
+						<p class="help-block"><?php if(isset($errors["dob"])) echo $errors["dob"]; ?></p> 
 					</div> 
 				</div>
 				
-				<div class="errors"><?php if(isset($errors["dob"])) echo $errors["dob"]; ?></div> 
+				
 			
 			<div class="form-group">	
 				<label class="col-md-4 control-label" for="lastname">Nom</label>  
 				<div class="col-md-4">
 					<input class="form-control input-md" id="lastname" name="lastname" type="text" placeholder="Nom" value="<?php if(isset($_POST["lastname"])) echo $_POST["lastname"]; ?>"> 
+					<p class="help-block"><?php if(isset($errors["lastname"])) echo $errors["lastname"]; ?></p>  
 				</div>  
 			</div>
 
-				<div class="errors"><?php if(isset($errors["lastname"])) echo $errors["lastname"]; ?></div>  
+				
 
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="firstname">Prénom</label> 
 					<div class="col-md-4">
 						<input class="form-control input-md" id="firstname" name="firstname" type="text" placeholder="Prénom" value="<?php if(isset($_POST["firstname"])) echo $_POST["firstname"]; ?>"> 
+						<p class="help-block"><?php if(isset($errors["firstname"])) echo $errors["firstname"]; ?></p>
 					</div>   
 				</div>
 
-				<div class="errors"><?php if(isset($errors["firstname"])) echo $errors["firstname"]; ?></div>  
+				  
 
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="gender">Civilité</label>
@@ -95,8 +118,7 @@
 					</div>
 				</div>
 
-				<div class="errors"></div>  
-
+				
 
 
 				<!-- ESPACE LOCALISATION UTILISATEURS-->
@@ -106,10 +128,11 @@
 						<select class="form-control" id="countrySelect" name="country">
 							<option value="FR" selected>France</option>
 						</select>
+						<p class="hekp-block"><?php if(isset($errors["location"])) echo $errors["location"]; ?></p>
 					</div>
 				</div>
 				
-				<div class="errors"><?php if(isset($errors["location"])) echo $errors["location"]; ?></div>  
+				  
 
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="postalcodeInput">Code postal</label>

@@ -1,5 +1,20 @@
 <?php $this->layout('layoutInscriptionConnexion', ['title' => 'Formulaire de connexion']) ?>  
 
+<!-- Page de connexion -->
+<?php $this->start('nav_homepage') ?>
+
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">Lookingforgroup.win</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+    	<ul class="nav navbar-nav navbar-right">
+    		<li><a class="" href="<?= $this->url('connexion_connexion') ?>">Connexion membre</a></li>
+	    </ul>
+
+
+    </div><!--/.navbar-collapse -->
+
+<?php $this->stop('nav_homepage') ?>
 
 
 <!-- Page de connexion -->
