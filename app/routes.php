@@ -3,6 +3,7 @@
 	$w_routes = array(
 		['GET', '/', 'Default#home', 'default_home'],
 		['GET|POST', '/', 'Connexion#header_default_connexion', 'default_connexion'],
+		['GET|POST', '/?errors=[:errors]', 'Connexion#header_default_connexion', 'default_connexionerror'],
 
 		
 		['GET|POST', '/connexion', 'Connexion#connexion', 'connexion_connexion'],

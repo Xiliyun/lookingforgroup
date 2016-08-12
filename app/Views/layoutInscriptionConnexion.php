@@ -29,21 +29,25 @@
   <div id="wrapper">
       <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
           <div class="container">
-              <?= $this->insert('templates/header/default') ?>
+              <?= $this->insert('templates/header/empty') ?>
               </div>
           </div>
       </nav>
   </div>
 
+<div>
+  <?= $this->section('content_top') ?>
+</div>
 
 <!-- Fond vert formulaire de connexion et inscription -->
-<div >
+<div>
 	<?= $this->section('content_form') ?>
 </div>
 
 
+<!-- Affichage contenu pour page de confirmation -->
 
-<div class="container main_content">
+<div class="container main_content ">
   <div class="row">
       <div class="col-md-12">
         <?= $this->section('main_content') ?>
