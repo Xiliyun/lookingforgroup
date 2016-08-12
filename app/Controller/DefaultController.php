@@ -18,7 +18,6 @@ class DefaultController extends Controller
 	public function home()
 	{
 
-		// AFFICHAGE DU HOME + envoi erreurs s'il y a
 		$this->show('default/home');
 	}
 

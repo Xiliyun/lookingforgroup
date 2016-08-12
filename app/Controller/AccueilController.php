@@ -15,7 +15,10 @@ class AccueilController extends Controller
 	public function accueil()
 	{
 		// AUTHORISE L'ACCES DU SITE AUX UTILISATEURS CONNECTES UNIQUEMENT (role 0)
+		
 		$this->allowTo(0);
+
+
 		$user = $this->getUser();
 
 

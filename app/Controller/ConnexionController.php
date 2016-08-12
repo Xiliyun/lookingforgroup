@@ -13,7 +13,8 @@ class ConnexionController extends Controller
 
 	public function connexion()
 	{
-		
+		$errors ="";
+
 		if($_POST) {
 			if(isset($_POST) && $_POST['connexion'] == 'Se connecter') {
 
@@ -36,17 +37,18 @@ class ConnexionController extends Controller
 
 						$dbUser->logUserIn($user);
 
-						//print_r($_SESSION);
 
-						// franck
 						$this->redirectToRoute('accueil_accueil');
 
+					}
+					else {
+						$errors = "identifiant et/ou mot de passe incorrect(s) !";
 					}
 				}
 		}
 		
 
-		$this->show('connexion/connexion');
+		$this->show('connexion/connexion', ['errors' => $errors]);
 	}
 
 
@@ -68,7 +70,7 @@ class ConnexionController extends Controller
 
 					$id_user = $dbUser->isValidLoginInfo($username, $password);
 
-					if( $id_user > 0){ // si la fonction renvoie un résultat autre que 0, l'utilisateur existe
+					if($id_user > 0){ // si la fonction renvoie un résultat autre que 0, l'utilisateur existe
 
 						// REMPLISSAGE DE S_SESSION AVEC LES DONNES UTILISATEURS RECUPEREES EN BASE
 						$db = new UserModel;
@@ -79,9 +81,7 @@ class ConnexionController extends Controller
 
 						$dbUser->logUserIn($user);
 
-						//print_r($_SESSION);
 
-						// franck
 						$this->redirectToRoute('accueil_accueil');
 
 					}

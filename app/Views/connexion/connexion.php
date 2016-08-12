@@ -41,6 +41,7 @@
 				  </div>
 				</div>
 			</fieldset>
+			<p class="help-block text-center"><?php if(isset($errors)) echo $errors; ?></p>
 		</form>
 </div>
 

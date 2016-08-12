@@ -25,11 +25,11 @@
 
     <div id="wrapper">
       <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-          <div class="container">
+        <div class="container">
             <div class="container-fluid">
-              <?= $this->insert('templates/header/main') ?>
-              </div>
-          </div>
+            <?= $this->insert('templates/header/main') ?>
+            </div>
+        </div>
       </nav>
   </div>
 
@@ -44,8 +44,8 @@
 
   <!-- ///////////////////////////USER PROFILE///////////////////////////// -->
 
-        <div class="container">
-            <div class="row profile">
+
+          <div class="row profile">
             <div class="col-md-3">
               <div class="profile-sidebar">
 
@@ -55,20 +55,35 @@
             </div>
 
 
+
             <div class="col-md-9">
               <div class="profile-content">
                 <div class="col-md-12">
  
-                    <?= $this->section('profil-droite-content') ?>
+                    <?= $this->section('profil-droite-content-user_info') ?>
 
                 </div>
+              </div>
             </div>
-          </div>
-        </div>
 
 
 
 
+            <div class="col-md-9">
+              <div class="profile-content">
+                <div class="col-md-12">
+ 
+                    <?= $this->section('profil-droite-content-user_genre') ?>
+
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+           </div>
 
   <!-- //////////////////////////////////////////////////////// -->
 
@@ -77,7 +92,6 @@
 
 
 
-    </div>
   </div>
 </div> 
 <!-- end container -->

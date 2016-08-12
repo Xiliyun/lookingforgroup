@@ -40,14 +40,32 @@
 		  		<div class="col-md-12 flex-container">
 		  			<div class="col-md-6">
 
-	  					<?= $this->section('content_gauche') ?>
+	  					<?= $this->section('content_header_gauche') ?>
 
 		  			</div>
 					<div class="col-md-6 jumbotron">
 
-		  				<?= $this->section('content_droite') ?>
+		  				<?= $this->section('content_header_droite') ?>
 
 		  			</div>
+
+		  		</div>
+
+		  		<div class="col-md-12">
+
+					<div class="col-md-3 content_header-bas-1">
+						<?= $this->section('content_header-bas-1') ?>
+					</div>
+					<div class="col-md-3 content_header-bas-2">
+						<?= $this->section('content_header-bas-2') ?>
+					</div>
+					<div class="col-md-3 content_header-bas-3">
+						<?= $this->section('content_header-bas-3') ?>
+					</div>
+					<div class="col-md-3 content_header-bas-4">
+						<?= $this->section('content_header-bas-4') ?>
+					</div>
+
 				</div>
 			</div>
 		</div>
