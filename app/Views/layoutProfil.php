@@ -18,26 +18,57 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
-      <link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>"> 
+      <link rel="stylesheet" href="<?= $this->assetUrl('css/style-profil.css') ?>"> 
   </head>
   
   <body>
-  <div id="wrapper">
-      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-          <div class="container">
-            <div class="container-fluid">
+	<div id="wrapper">
+	    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	        <div class="container">
+	        	<div class="container-fluid">
               <?= $this->insert('templates/header/main') ?>
-              </div>
+	            </div>
+	        </div>
+	    </nav>
+	</div>
+
+    <div class="container">
+      <div class="row">
+          <div class="col-md-12 profil-titre">
+            <?= $this->section('profil-titre') ?>
           </div>
-      </nav>
-  </div>
-
-    <div class="container">
-      <div class="row">
-          
 
 
+          <div class="col-md-12">
+            <div class="col-md-4">
+              <div class="col-md-12 profil-gauche">
+                <?= $this->section('profil-gauche') ?>
+              </div>
+            </div>
 
+            <div class="col-md-8">
+              <div class="col-md-12  profil-droite">
+
+              <!-- Affichage en tabs -->
+                <div class="col-md-12">
+                  <div class="profile-tabs">
+                    <div class="tab-container">
+                      <div class="nav nav-tabs nav-justified">
+                        <?= $this->section('profil-droite-nav') ?>
+                      </div>
+
+                      <div class="tab-content">
+                        <?= $this->section('profil-droite-content') ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+
+
+          </div>
       </div>
     </div>
 
@@ -46,13 +77,14 @@
 
 
 
-  <footer>
-    <div class="container">
-      <div class="row">
-          <?= $this->insert('templates/footer/simple') ?>
-      </div>
-    </div>
-  </footer>
+	<footer>
+		<div class="container">
+			<div class="row">
+
+
+			</div>
+		</div>
+	</footer>
 
 
 

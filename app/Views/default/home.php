@@ -1,69 +1,43 @@
-<?php $this->layout('layout', ['title' => 'Lookingforgroup.win']) ?>  ?>
+<?php $this->layout('layoutLanding', ['title' => 'Lookingforgroup.win']) ?>  ?>
 
 <!-- Homepage -->
-<?php $this->start('nav_homepage') ?> 
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Lookingforgroup.win</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
- 			
-           <!--  <button type="submit" class="btn btn-default">Connectez-vous</button> -->
-          </form>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
 
-<?php $this->stop('nav_homepage') ?>
+<?php $this->start('content_gauche') ?>
 	
 
-	
-<?php $this->start('main_content') ?> 
 
-<div id=bloc-image-home>
-	
-	<img src="<?= $this->assetUrl('img/ex-img-acc.jpg');?>" >
-</div>
 
-<div id=bloc-connect-home>
-	
 
-	<div id="logo">
-		
-		<img src="<?= $this->assetUrl('img/logo.jpg');?>" >
-	</div>
-	
+<?php $this->stop('content_gauche') ?>
 
-	<div id="baseline"> Un site de rencontre (amitié et/ou amoureuse) orienté sur les goûts en jeux vidéo et à caractère communautaire.</div> 
+<?php $this->start('content_droite') ?> 
 
-	
-<div id="boutons-home">
-		<form class="form-group" role="form" >
-			<label for="connexion">Déjà membre</label>
-			<a href="<?= $this->url('connexion_connexion') ?>">
-			<input type="submit" name="connexion" value="Connexion" class="btn btn-default"></a>
+		<h1 hidden>Looking for group, site de rencontre pour gamers</h1>
 
-			<label for="inscription">1ère visite</label>
+		<div class="img-responsive">	
+			<img src="<?= $this->assetUrl('img/logo-OK.svg');?>" >
+		</div>
+
+
+
+		<div>
+			Un site communautaire de rencontre cool entre gamers!
+		</div>
+
+
+		<div>
+			<p>Première visite ? </p>
 			<a href="<?= $this->url('inscription_inscription') ?>">
-			<input type="submit" name="inscription" value="Inscription" class="btn btn-default"></a>
-		</form>
-	</div> 
-</div>
+			<input type="submit" name="inscription" value="Inscription" class="btn btn-lg btn-block" id="btnInscription"></a>
 		
-		
-	
+			<p>Déjà membre ?
+			<a href="<?= $this->url('connexion_connexion') ?>"> Se connecter </a>
+			</p>
+		</div>
 
 
 
-	
+<?php $this->stop('content_droite') ?>
 
 
 
@@ -71,4 +45,38 @@
 
 
 
-<?php $this->stop('main_content') ?>
+
+
+<!-- MAIN CONTENT -->
+<?php $this->start('content_block-1') ?> 
+	<h2>
+		BIENVENUE SUR LOOKING FOR GROUP 
+	</h2>
+<?php $this->stop('content_block-1') ?>
+
+
+
+
+
+
+<?php $this->start('content_block-2-gauche') ?> 
+
+	<h2>Rencontrez d'autres gamers !</h2>
+	<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt maiores reprehenderit temporibus labore, et ratione commodi, repudiandae blanditiis nam earum, omnis quam asperiores culpa dolores fuga. Nisi odio, atque accusamus.</div>
+<?php $this->stop('content_block-2-gauche') ?>
+
+
+<?php $this->start('content_block-2-centre') ?> 
+	<h2>Trouvez des partenaires de jeux !</h2>
+
+	<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt maiores reprehenderit temporibus labore, et ratione commodi, repudiandae blanditiis nam earum, omnis quam asperiores culpa dolores fuga. Nisi odio, atque accusamus.</div>
+<?php $this->stop('content_block-2-centre') ?>
+
+
+<?php $this->start('content_block-2-droite') ?> 
+
+	<h2>Partagez votre passion !</h2>
+	<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt maiores reprehenderit temporibus labore, et ratione commodi, repudiandae blanditiis nam earum, omnis quam asperiores culpa dolores fuga. Nisi odio, atque accusamus.</div>
+<?php $this->stop('content_block-2-droite') ?>
+
+

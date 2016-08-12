@@ -1,0 +1,48 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto';
+
+body{
+	font-family: 'Roboto', sans-serif;
+	color: white;
+
+
+    margin-top: 50px; /* Required margin for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+	padding:0;
+	background-color:#333333;
+	min-height: 100vh;
+
+}
+
+
+
+body .container .profil-titre h1 {
+	display: inline-block;
+}
+
+
+body .container .profil-gauche {
+	min-height: 600px;
+	padding: 2%;
+
+	border: black solid 1px;
+}
+
+body .container .profil-gauche .profil-user-photo {
+}
+
+
+
+body .container .profil-droite {
+	min-height: 600px;
+	padding: 2%;
+
+	border: black solid 1px;
+
+}
+
+
+footer {
+	text-align: center;
+    min-height: 30px;
+    width: 100%;
+    padding-top: 50px;
+}

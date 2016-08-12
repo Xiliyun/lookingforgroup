@@ -2,7 +2,7 @@
 namespace Controller;
 
 use \W\Controller\Controller;
-use Model\Registration\UserModel;
+use Model\Registration\UserRegistrationModel;
 use Model\Registration\UserLocationModel;
 use DateTime;
 
@@ -15,13 +15,14 @@ class InscriptionController extends Controller {
 
 		$errors = array();
 
-		if ($_POST) {
+		if($_POST) {
+			if($_POST["inscrire"]) {
 			/**************************************************************/
 			/////// ETAPE 1 : INSERTION DES DONNEES EN TABLE USER /////////
 			/************************************************************/
 
 
-				$dbUser = new UserModel;
+				$dbUser = new UserRegistrationModel;
 				$dbUser->setTable("user");
 				$dbUser->setPrimaryKey('id_user');
 
@@ -218,8 +219,9 @@ class InscriptionController extends Controller {
 
 
 			//$this->redirectToRoute('inscription_confirmation');
-
+		}
 		} // END IF POST
+
 		
 		$this->show('inscription/inscription', ["errors" => $errors] );
 
@@ -229,7 +231,7 @@ class InscriptionController extends Controller {
 			$this->show('inscription/confirmation');
 			
 	}
-
+	
 
 }
 
