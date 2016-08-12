@@ -15,8 +15,8 @@ class InscriptionController extends Controller {
 
 		$errors = array();
 
-		if($_POST) {
-			if($_POST["inscrire"]) {
+		
+			if(isset($_POST["inscrire"]) && $_POST["inscrire"] == "S'inscrire") {
 			/**************************************************************/
 			/////// ETAPE 1 : INSERTION DES DONNEES EN TABLE USER /////////
 			/************************************************************/
@@ -138,9 +138,10 @@ class InscriptionController extends Controller {
 			if(empty($password)) {
 				$errors['password'] = 'Veuillez remplir ce champs';		
 			}
-			else if (!preg_match('/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/', $password)) {
-				$errors['password'] = 'Votre mot de passe doit respecter les conditions suivantes : minimum 6 caractères alphanumériques comprenant 1 chiffre et 1 caractère spécial';		
+			else if (!preg_match('/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d$@$!%*#?&]{6,}$/', $password)) {
+				$errors['password'] = 'Votre mot de passe doit respecter les conditions suivantes : minimum 6 caractères alphanumériques comprenant 1 chiffre';		
 			}
+			// (?=.*[$@$!%*#?&])
 
 			// verification que les mots de passe correspondent
 			if(empty($_POST['passwordConfirm'])) {
@@ -149,6 +150,10 @@ class InscriptionController extends Controller {
 				$errors['passwordConfirm'] = 'Vos mots de passe ne se correspondent pas';		
 			}
 
+			// verification que l'utilisateur a bien entré son genre
+			if(empty($dob)) {
+				$errors['gender'] = 'Êtes vous un homme ou une femme? Veuillez préciser votre sexe';
+			}
 
 			// verification que l'utilisateur a bien entré son adresse
 			if(empty($postal_code)) {
@@ -211,16 +216,14 @@ class InscriptionController extends Controller {
 			$insert = $dbLoc->insert($dataLoc, $stripTags = true);
 			// //print_r($insert);
 
-			//$confirmation = true;
-			
 			$this->redirectToRoute('inscription_confirmation');
 
 			} // end if empty $errors
 
 
 			//$this->redirectToRoute('inscription_confirmation');
-		}
-		} // END IF POST
+		} // END condition If($_POST)
+
 
 		
 		$this->show('inscription/inscription', ["errors" => $errors] );
@@ -228,6 +231,7 @@ class InscriptionController extends Controller {
 	}
 
 	public function confirmation () {
+		// TODO gérer la connexion dès l'inscription
 			$this->show('inscription/confirmation');
 			
 	}
