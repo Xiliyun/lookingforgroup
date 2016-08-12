@@ -34,10 +34,8 @@
 
     <div class="container">
       <div class="row">
-          
-
-
-
+        <!-- TODO créer des pages d'erreur swag -->
+        <?= $this->section('main_content') ?>
       </div>
     </div>
 

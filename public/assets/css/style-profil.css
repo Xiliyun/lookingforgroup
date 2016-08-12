@@ -1,42 +1,23 @@
 @import 'https://fonts.googleapis.com/css?family=Roboto';
 
 body{
-	font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
 
 
-    margin-top: 50px; /* Required margin for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-	padding:0;
-	background-color:#BDC3C7;
-	min-height: 100vh;
+  margin-top: 50px; /* Required margin for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+  padding:0;
+  background-color:#BDC3C7;
+  min-height: 100vh;
 
 }
 
 
 body .container .profil-titre h1 {
-	display: inline-block;
-	color : #eee;
+  display: inline-block;
+  color : #eee;
 }
 
 
-body .container .profil-gauche {
-	min-height: 600px;
-	padding: 2%;
-
-	border: black solid 1px;
-}
-
-body .container .profil-gauche .profil-user-photo {
-}
-
-
-
-body .container .profil-droite {
-	min-height: 600px;
-	padding: 2%;
-
-	border: black solid 1px;
-
-}
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -46,19 +27,25 @@ body .container .profil-droite {
 /* Profile container */
 .profile {
   margin: 20px 0;
+
+
+
 }
 
 /* Profile sidebar */
 .profile-sidebar {
   padding: 20px 0 10px 0;
   background: #eee;
+  border-radius: 8px;
+  margin-bottom: 20px;
+
 }
 
 .profile-userpic img {
   float: none;
   margin: 0 auto;
-  width: 50%;
-  height: 50%;
+  width: 70%;
+  height: 70%;
   -webkit-border-radius: 50% !important;
   -moz-border-radius: 50% !important;
   border-radius: 50% !important;
@@ -71,12 +58,12 @@ body .container .profil-droite {
 
 .profile-userinfo-username {
   color: #5a7391;
-  font-size: 16px;
+  font-size: 1.6em;
   font-weight: 600;
   margin-bottom: 7px;
 }
 
-.profile-userinfo-job {
+.profile-userinfo-info {
   text-transform: uppercase;
   color: #5b9bd1;
   font-size: 12px;
@@ -95,6 +82,7 @@ body .container .profil-droite {
   font-weight: 600;
   padding: 6px 15px;
   margin-right: 5px;
+
 }
 
 .profile-userbuttons .btn:last-child {
@@ -140,11 +128,27 @@ body .container .profil-droite {
   margin-left: -2px;
 }
 
+
+
+
 /* Profile Content */
 .profile-content {
+  overflow: auto; /* clearfix */
+
+  border-radius: 8px;
+
   padding: 20px;
   background: #eee;
-  min-height: 460px;
+  min-height: inherit ;
+
+  margin-bottom: 20px;
+
+
+
+}
+
+.profile-content h2 {
+  color: #5b9bd1;
 }
 
 
@@ -156,7 +160,7 @@ body .container .profil-droite {
 
 
 footer {
-	text-align: center;
+  text-align: center;
     min-height: 30px;
     width: 100%;
     padding-top: 50px;
