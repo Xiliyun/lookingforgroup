@@ -1,28 +1,13 @@
 <?php $this->layout('layoutInscriptionConnexion', ['title' => 'Formulaire d\'inscription']) ?>
 <!-- Page d'inscription' -->
 
-<?php $this->start('nav_homepage') ?>
-
-    <div class="navbar-header">
-        <a class="navbar-brand" href="#">Lookingforgroup.win</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-    	<ul class="nav navbar-nav navbar-right">
-    		<li><a class="" href="<?= $this->url('connexion_connexion') ?>">Connexion membre</a></li>
-	    </ul>
-
-
-    </div><!--/.navbar-collapse -->
-
-<?php $this->stop('nav_homepage') ?>
-
-
-
+<!-- TODO mettre le champs ville en disabled de base avec un changement après avoir entré le cp!!!  -->
 <?php $this->start('content_form') ?>
 <div id="container">
 	<form class="form-horizontal"  method="POST" > 
 	<!-- TODO envoyer le formulaire sur une page -->
 			<fieldset>
+			<legend class="text-center">Formulaire d'inscription</legend>
 				
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="username">Pseudo</label> 
@@ -48,7 +33,7 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="password">Mot de passe</label>
 					<div class="col-md-4">  
-						<input class="form-control input-md" id="password" name="password" type="password" placeholder="min 6 caractères, 1 chiffre et 1 caractère spécial" value="<?php if(isset($_POST["password"])) echo $_POST["password"]; ?>"> 
+						<input class="form-control input-md" id="password" name="password" type="password" placeholder="min 6 caractères, 1 chiffre" value="<?php if(isset($_POST["password"])) echo $_POST["password"]; ?>"> 
 						<p class="help-block"><?php if(isset($errors["password"])) echo $errors["password"]; ?></p>  
 					</div>  
 				</div>
@@ -59,7 +44,7 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="passwordConfirm">Confirmation de mot de passe</label> 
 					<div class="col-md-4"> 
-						<input class="form-control input-md" id="passwordConfirm" name="passwordConfirm" type="password" placeholder="min 6 caractères, 1 chiffre et 1 caractère spécial" value=""> 
+						<input class="form-control input-md" id="passwordConfirm" name="passwordConfirm" type="password" placeholder="min 6 caractères, 1 chiffre" value=""> 
 						<p class="help-block"><?php if(isset($errors["passwordConfirm"])) echo $errors["passwordConfirm"]; ?></p>
 					</div>  
 				</div>
@@ -109,11 +94,13 @@
 					<div class=col-md-6>
 						<div class="form-group">
 							<label class="col-md-4 control-label">
-								<input  type="radio" id="gender" name="gender" value="m" checked> Homme
+								<input  type="radio" id="gender" name="gender" value="m"> Homme
 							</label>
 							<label class="col-md-4 control-label">
 								<input  type="radio" id="gender" name="gender" value="f"> Femme
 							</label>
+								<p class="help-block"><?php if(isset($errors["gender"])) echo $errors["gender"]; ?></p>
+
 						</div>
 					</div>
 				</div>
@@ -187,6 +174,7 @@
 				
 			</fieldset>
 		</form>
+		<div>Déjà membre?<a class="" href="<?= $this->url('connexion_connexion') ?>"> Cliquez ici pour vous connecter !</a></div>
 </div>
 
 
