@@ -26,7 +26,7 @@
 	    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	        <div class="container">
 	        	<div class="container-fluid">
-	            <?= $this->section('nav_main') ?>
+              <?= $this->insert('templates/header/main') ?>
 	            </div>
 	        </div>
 	    </nav>
@@ -48,7 +48,21 @@
 
             <div class="col-md-8">
               <div class="col-md-12  profil-droite">
-              <?= $this->section('profil-droite') ?>
+
+              <!-- Affichage en tabs -->
+                <div class="col-md-12">
+                  <div class="profile-tabs">
+                    <div class="tab-container">
+                      <div class="nav nav-tabs nav-justified">
+                        <?= $this->section('profil-droite-nav') ?>
+                      </div>
+
+                      <div class="tab-content">
+                        <?= $this->section('profil-droite-content') ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 
               </div>
             </div>
@@ -66,7 +80,8 @@
 	<footer>
 		<div class="container">
 			<div class="row">
-				<p><?= date('Y') ?> | &copy; lookingforgroup | Esther Doan - Emilie Hersant - Franck Vallortigara </p>
+
+
 			</div>
 		</div>
 	</footer>
@@ -76,6 +91,8 @@
 <!-- Script -->
 
 <?= $this->section('customScript') ?>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 </body>
 </html>

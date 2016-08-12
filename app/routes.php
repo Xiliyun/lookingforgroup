@@ -12,8 +12,11 @@
 
 		['GET|POST','/inscription/confirmation', 'Inscription#confirmation', 'inscription_confirmation'],
 
-		['GET','/mon-profil', 'Profil#monprofil', 'profil_profil'],
+		['GET','/profil/utilisateur', 'Profil#userOwnProfile', 'profil_myprofile'],
+		//['GET','/profil/[:id_user]', 'Profil#userProfile', 'profil_user'],
+
 		['GET','/recherche', 'Recherche#marecherche', 'recherche_marecherche'],
+
 		['GET','/accueil', 'Accueil#accueil', 'accueil_accueil'],
 
 		

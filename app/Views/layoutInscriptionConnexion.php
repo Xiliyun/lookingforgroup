@@ -19,8 +19,21 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
       <link rel="stylesheet" href="<?= $this->assetUrl('css/style-connexion-inscription.css') ?>"> 
+      <link rel="stylesheet" href="<?= $this->assetUrl('css/style-dropdown-connexion.css') ?>"> 
+
+
+
   </head>
 <body>
+
+  <div id="wrapper">
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <div class="container">
+              <?= $this->insert('templates/header/default') ?>
+              </div>
+          </div>
+      </nav>
+  </div>
 
 
 <!-- Fond vert formulaire de connexion et inscription -->
@@ -30,9 +43,42 @@
 
 
 
+<div class="container main_content">
+  <div class="row">
+      <div class="col-md-12">
+        <?= $this->section('main_content') ?>
+      </div>
+  </div>
+</div>
 
 
 
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+            <?= $this->insert('templates/footer/simple') ?>
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+
+
+  <script type="text/javascript" src="http://api.geonames.org/export/geonamesData.js?username=estheremiliefranck"></script>
+  <script src="<?= $this->assetUrl('js/inscription/geoname.js') ?>"></script>
+  <script src="<?= $this->assetUrl('js/inscription/jsr_class.js') ?>"></script>
+
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 
 

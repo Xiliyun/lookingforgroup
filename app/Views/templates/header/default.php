@@ -8,7 +8,7 @@
 
 
     <div class="navbar-header">
-        <a class="navbar-brand" href="#">Lookingforgroup.win</a>
+        <a class="navbar-brand" href="<?= $this->url('default_home') ?>">Lookingforgroup.win</a>
     </div>
 
     <div id="myNavbar" class="collapse navbar-collapse">
