@@ -1,23 +1,33 @@
 <?php
 	
 	$w_routes = array(
+		// Landing Page
 		['GET', '/', 'Default#home', 'default_home'],
-		['GET|POST', '/', 'Connexion#header_default_connexion', 'default_connexion'],
 
-		
+
+		// Connexion
+		['GET|POST', '/', 'Connexion#header_default_connexion', 'default_connexion'],
+		['GET|POST', '/?errors=[:errors]', 'Connexion#header_default_connexion', 'default_connexionerror'],
 		['GET|POST', '/connexion', 'Connexion#connexion', 'connexion_connexion'],
+
+		// Deconnexion
 		['GET|POST', '/deconnexion', 'Deconnexion#deconnexion', 'deconnexion_deconnexion'],
 
+		// inscription
 		['GET|POST', '/inscription', 'Inscription#inscription', 'inscription_inscription'],
-
 		['GET|POST','/inscription/confirmation', 'Inscription#confirmation', 'inscription_confirmation'],
 
-		['GET','/profil/utilisateur', 'Profil#userOwnProfile', 'profil_myprofile'],
-		//['GET','/profil/[:id_user]', 'Profil#userProfile', 'profil_user'],
+		// User Profile
+		['GET','/profil/[:id]', 'Profil#userProfile', 'profil_user'],
 
-		['GET','/recherche', 'Recherche#marecherche', 'recherche_marecherche'],
+
+		// TODO : espace admin
+
+		// Recherche
+		['GET|POST','/recherche/', 'Recherche#recherche', 'recherche_recherche'],
+
+
 
 		['GET','/accueil', 'Accueil#accueil', 'accueil_accueil'],
 
-		
 	);

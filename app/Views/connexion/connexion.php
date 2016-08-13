@@ -1,20 +1,11 @@
 <?php $this->layout('layoutInscriptionConnexion', ['title' => 'Formulaire de connexion']) ?>  
 
-<!-- Page de connexion -->
-<?php $this->start('nav_homepage') ?>
+<?php $this->start('content_top') ?>
+<div class="alert alert-warning" role="alert">
+  Le contenu du site est uniquement accessible aux membres connectés, merci de vous connecter via le formulaire ci-dessous ou <a href="<?= $this->url('inscription_inscription') ?>" class="alert-link"> créer un compte !</a>
+</div>
 
-    <div class="navbar-header">
-        <a class="navbar-brand" href="#">Lookingforgroup.win</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-    	<ul class="nav navbar-nav navbar-right">
-    		<li><a class="" href="<?= $this->url('connexion_connexion') ?>">Connexion membre</a></li>
-	    </ul>
-
-
-    </div><!--/.navbar-collapse -->
-
-<?php $this->stop('nav_homepage') ?>
+<?php $this->stop('content_top') ?>
 
 
 <!-- Page de connexion -->
@@ -50,6 +41,7 @@
 				  </div>
 				</div>
 			</fieldset>
+			<p class="help-block text-center"><?php if(isset($errors)) echo $errors; ?></p>
 		</form>
 </div>
 

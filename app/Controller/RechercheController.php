@@ -3,7 +3,7 @@
 namespace Controller;
 
 use \W\Controller\Controller;
-use Model\Recherche\RechercheModel;
+use Model\recherche\RechercheModel;
 
 //En W, mes controleurs hérites toujours de la classe Controller de W.
 //De cette façon j'ai accès aux fonctions tel que $this->
@@ -11,14 +11,30 @@ class RechercheController extends Controller
 {
 
 	
-	public function marecherche()
+	public function recherche()
 	{
-		// $db = new RechercheModel;
+		$db = new RechercheModel;
+		$tri = '';
 		
+		if(isset($_POST['envoyer'])){
+
+			$db->setTable('table_resume');
+			$tri = $db->search(['genre_name' => $_POST['genre'],
+			 					'city' => $_POST['city'],
+			 					'gender'=> $_POST['sexe'],
+			 					'region'=> $_POST['region']
+			 					], $operator='AND');
+			 	 
 		
-		// $MonObjetRecherce = $db->getrecherche();
+		}
+		//SEARCH VA NOUS PERMETTRE DE FAIRE DES TRIS COMME SUIVI
+		// $db->setTable('table_resume');
+		// $_triParis = $db->search(['genre_name' => 'action']);
+
+
+		//$this->search(['nom de la colonne dans la bdd' => 'valeur à chercher'])
 	
-		$this->show('recherche/recherche'); 
-		//, ['recherche' => $MonObjetRecherce]);
+		$this->show('Recherche/Recherche',['tri'=>$tri]); 
+		
 	}
 }

@@ -22,15 +22,17 @@
   </head>
   
   <body>
-	<div id="wrapper">
-	    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-	        <div class="container">
-	        	<div class="container-fluid">
-              <?= $this->insert('templates/header/main') ?>
-	            </div>
-	        </div>
-	    </nav>
-	</div>
+
+    <div id="wrapper">
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="container-fluid">
+            <?= $this->insert('templates/header/main') ?>
+            </div>
+        </div>
+      </nav>
+  </div>
+
 
     <div class="container">
       <div class="row">
@@ -39,39 +41,60 @@
           </div>
 
 
-          <div class="col-md-12">
-            <div class="col-md-4">
-              <div class="col-md-12 profil-gauche">
-                <?= $this->section('profil-gauche') ?>
+
+  <!-- ///////////////////////////USER PROFILE///////////////////////////// -->
+
+
+          <div class="row profile">
+            <div class="col-md-3">
+              <div class="profile-sidebar">
+
+                  <?= $this->section('profil-gauche') ?>
+
               </div>
             </div>
 
-            <div class="col-md-8">
-              <div class="col-md-12  profil-droite">
 
-              <!-- Affichage en tabs -->
+
+            <div class="col-md-9">
+              <div class="profile-content">
                 <div class="col-md-12">
-                  <div class="profile-tabs">
-                    <div class="tab-container">
-                      <div class="nav nav-tabs nav-justified">
-                        <?= $this->section('profil-droite-nav') ?>
-                      </div>
+ 
+                    <?= $this->section('profil-droite-content-user_info') ?>
 
-                      <div class="tab-content">
-                        <?= $this->section('profil-droite-content') ?>
-                      </div>
-                    </div>
-                  </div>
                 </div>
-                
               </div>
             </div>
 
 
-          </div>
-      </div>
-    </div>
 
+
+            <div class="col-md-9">
+              <div class="profile-content">
+                <div class="col-md-12">
+ 
+                    <?= $this->section('profil-droite-content-user_genre') ?>
+
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+           </div>
+
+  <!-- //////////////////////////////////////////////////////// -->
+
+
+
+
+
+
+  </div>
+</div> 
+<!-- end container -->
 
 
 

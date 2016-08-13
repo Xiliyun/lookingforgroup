@@ -36,7 +36,7 @@
 									<div class="form-group">
 										 <input type="submit" id="connexion" name="connexion" value="Se connecter" class="btn btn-primary btn-block">
 									</div>
-									<p class="errors"><?php if(isset($errors)) echo $errors; ?></p>
+									<p class="errors"><?php if(isset($_GET['errors'])) echo $_GET['errors']; ?></p>
 									<!-- <div class="checkbox">
 										 <label>
 										 <input type="checkbox"> keep me logged-in

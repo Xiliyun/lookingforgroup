@@ -13,7 +13,8 @@ class ConnexionController extends Controller
 
 	public function connexion()
 	{
-		
+		$errors ="";
+
 		if($_POST) {
 			if(isset($_POST) && $_POST['connexion'] == 'Se connecter') {
 
@@ -36,17 +37,18 @@ class ConnexionController extends Controller
 
 						$dbUser->logUserIn($user);
 
-						//print_r($_SESSION);
 
-						// franck
 						$this->redirectToRoute('accueil_accueil');
 
+					}
+					else {
+						$errors = "identifiant et/ou mot de passe incorrect(s) !";
 					}
 				}
 		}
 		
 
-		$this->show('connexion/connexion');
+		$this->show('connexion/connexion', ['errors' => $errors]);
 	}
 
 
@@ -57,8 +59,8 @@ class ConnexionController extends Controller
 
 		// CONTROLLEUR DU FORMULAIRE DE CONNEXION DES LA HOMEPAGE
 		$errors ="";
-		if($_POST) {
-			if(isset($_POST) && $_POST['connexion'] == 'Se connecter') {
+		
+			if(isset($_POST['connexion']) && $_POST['connexion'] == 'Se connecter') {
 
 					// initialisation de la classe qui permet de vérifier l'utilisateur en BDD
 					$dbUser = new userConnexionModel;
@@ -68,7 +70,7 @@ class ConnexionController extends Controller
 
 					$id_user = $dbUser->isValidLoginInfo($username, $password);
 
-					if( $id_user > 0){ // si la fonction renvoie un résultat autre que 0, l'utilisateur existe
+					if($id_user > 0){ // si la fonction renvoie un résultat autre que 0, l'utilisateur existe
 
 						// REMPLISSAGE DE S_SESSION AVEC LES DONNES UTILISATEURS RECUPEREES EN BASE
 						$db = new UserModel;
@@ -79,23 +81,22 @@ class ConnexionController extends Controller
 
 						$dbUser->logUserIn($user);
 
-						//print_r($_SESSION);
 
-						// franck
 						$this->redirectToRoute('accueil_accueil');
 
 					}
 					else {
 						// TODO GERER L'ERREUR DE REDIRECTION ?!!!
 						$errors = "identifiant et/ou mot de passe incorrect(s) !";
+						$this->redirectToRoute('default_connexionerror', ['errors' => $errors]);
+
 					}
 
-			}
-		}
-
+			} // END CONDITION IF POST
+		
 
 		// AFFICHAGE DU HEADER + envoi erreurs s'il y a
-		$this->show('templates/header/default', ['errors' => $errors]);
+		$this->show('templates/header/default');
 
 
 
