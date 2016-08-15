@@ -6,11 +6,9 @@
 	
 
 
-
-
 <?php $this->stop('content_header_gauche') ?>
 
-<?php $this->start('content_header_droite') ?> 
+<?php $this->start('content_header_full') ?> 
 
 		<h1 hidden>Looking for group, site de rencontre pour gamers</h1>
 
@@ -19,16 +17,10 @@
 		</div>
 
 
-
 		<div>
-			Un site communautaire de rencontre cool entre gamers!
-		</div>
-
-
-		<div>
-			<p>Première visite ? </p>
+			<p>Un site communautaire de rencontre cool entre gamers!</p>
 			<a href="<?= $this->url('inscription_inscription') ?>">
-			<input type="submit" name="inscription" value="Inscription" class="btn btn-lg btn-block" id="btnInscription"></a>
+			<input type="submit" name="inscription" value="Inscription" class="btn btn-lg" id="btnInscription"></a>
 		
 			<p>Déjà membre ?
 			<a href="<?= $this->url('connexion_connexion') ?>"> Se connecter </a>
@@ -37,26 +29,38 @@
 
 
 
-<?php $this->stop('content_header_droite') ?>
+<?php $this->stop('content_header_full') ?>
 
 <?php $this->start('content_header-bas-1') ?> 
-	<span class="glyphicons glyphicons-gamepad">fdg</span>	<h2>Rencontrez d'autres gamers !</h2>
-	<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt maiores reprehenderit temporibus labore, et ratione commodi, repudiandae blanditiis nam earum, omnis quam asperiores culpa dolores fuga. Nisi odio, atque accusamus.</div>
+<div>
+	<i class="fa fa-gamepad fa-4x" aria-hidden="true"></i>
+	<h2>Rencontrez d'autres gamers !</h2>
+	<p>Basé sur vos goûts de jeux, rencontrez d'autres gamers dans votre région</p>
+</div>
 <?php $this->stop('content_header-bas-1') ?> 
 
 <?php $this->start('content_header-bas-2') ?> 
+<div>
+	<i class="fa fa-users fa-4x" aria-hidden="true"></i>
 	<h2>Trouvez des partenaires de jeux !</h2>
-	<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt maiores reprehenderit temporibus labore, et ratione commodi, repudiandae blanditiis nam earum, omnis quam asperiores culpa dolores fuga. Nisi odio, atque accusamus.</div>
+	<p>Vous aimez le multiplayer? vous n'êtes pas le seul !</p>
+</div>
 <?php $this->stop('content_header-bas-2') ?> 
 
 <?php $this->start('content_header-bas-3') ?> 
+<div>
+	<i class="fa fa-comments fa-4x" aria-hidden="true"></i>
 	<h2>Partagez votre passion !</h2>
-	<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt maiores reprehenderit temporibus labore, et ratione commodi, repudiandae blanditiis nam earum, omnis quam asperiores culpa dolores fuga. Nisi odio, atque accusamus.</div>
+	<p>Venez participer aux chats et events de la communauté !</p>
+</div>
 <?php $this->stop('content_header-bas-3') ?> 
 
 <?php $this->start('content_header-bas-4') ?> 
+<div>
+	<i class="fa fa-heart fa-4x" aria-hidden="true"></i>
 	<h2>Et un peu plus si affinités...</h2>
-	<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt maiores reprehenderit temporibus labore, et ratione commodi, repudiandae blanditiis nam earum, omnis quam asperiores culpa dolores fuga. Nisi odio, atque accusamus.</div>
+	<p>On est quand même là pour se... rencontrer ;)</p>
+</div>
 <?php $this->stop('content_header-bas-4') ?> 
 
 
@@ -64,23 +68,3 @@
 
 
 <!-- MAIN CONTENT -->
-<?php $this->start('content_block-1') ?> 
-
-<?php $this->stop('content_block-1') ?>
-
-
-<?php $this->start('content_block-2-gauche') ?> 
-
-<?php $this->stop('content_block-2-gauche') ?>
-
-
-<?php $this->start('content_block-2-centre') ?> 
-
-<?php $this->stop('content_block-2-centre') ?>
-
-
-<?php $this->start('content_block-2-droite') ?> 
-
-<?php $this->stop('content_block-2-droite') ?>
-
-

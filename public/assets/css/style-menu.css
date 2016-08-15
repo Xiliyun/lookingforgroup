@@ -1,0 +1,79 @@
+
+
+
+/*************** Style navbar ****************/
+
+.navbar {
+    background-image: none;
+    text-transform: uppercase;
+
+    border: none;
+    border-top: 6px solid #47d9bf;
+
+}
+.navbar-inverse {
+    background-color: #3E3C36;
+}
+
+
+.navbar #myNavbar a:hover {
+    color:#47d9bf ;
+
+}
+
+.navbar .dropdown-menu {
+    background-color: #47d9bf;
+}
+
+/* Effet hover !!*/
+.dropdown:hover .dropdown-menu {
+    display: inline-block;
+
+}
+
+
+
+
+
+/******************* Style dropdown Connexion sur landing page ********************/
+#login-dp{
+    min-width: 260px;
+    padding: 14px 14px 0;
+    overflow:hidden;
+    background-color:rgba(62, 60, 54, 0.8);
+}
+
+
+#login-dp .bottom{
+    background-color:rgba(100,100,100,.2);
+    border-top:1px solid #333;
+    clear:both;
+    padding:14px;
+}
+#login-dp .social-buttons{
+    margin:12px 0    
+}
+#login-dp .form-group {
+    margin-bottom: 10px;
+}
+
+
+/*************** Style sidenav ****************/
+
+.sidenav {
+    height: 100%;
+}
+
+/****************  FOOTER ********************/
+
+
+
+footer {
+    text-align: center;
+    width: 100%;
+    background-color: #47d9bf;
+
+
+
+
+}

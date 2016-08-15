@@ -29,24 +29,25 @@
 		<!-- navigation droite -->
     	<ul class="nav navbar-nav navbar-right">
     		<?php if($w_user['role'] == 1): // si l'utilisateur est admin ?>
-			<li><a href="#">Admin</a></li> 
+			<li><a href="<?= $this->url('admin_dashboard') ?>">Admin</a></li> 
     		<?php endif; ?>
 
     		<!-- <li><p class="navbar-text">Espace membre : </p></li> -->    		
 		<li class="dropdown">
 		<!-- A faire : afficher nom de l'utilisateur -->
-         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Espace membre </b> <span class="caret"></span></a>
+
+        	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Espace membre </b> <span class="caret"></span></a>
 			<ul class="dropdown-menu">
 
 				<!-- ici j'ai passé l'id de l'utilisateur connecté en paramètre :> -->
-				<li><a href="<?= $this->url('profil_user', ['id' => $w_user['id_user']]) ?>">Mon Profil</a></li> 
-	            <li role="separator" class="divider"></li>
+				<li><a href="<?= $this->url('profil_user', ['id' => $w_user['id_user']]) ?>"><span class="glyphicon glyphicon-user" aria-hidden="true"> </span> Mon Profil</a></li> 
+				<li><a href="<?= $this->url('profil_accountInfo') ?>"><span class="glyphicon glyphicon-cog" aria-hidden="true"> </span> Parametres</a></li> 
 	            <li><a href="<?= $this->url('deconnexion_deconnexion') ?>">Se deconnecter</a></li>
 
 
 	        </ul>
 
 
-				</li>
+		</li>
 
     </div><!--/.navbar-collapse -->
