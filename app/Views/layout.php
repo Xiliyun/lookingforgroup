@@ -19,10 +19,16 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
       <link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>"> 
+      <link rel="stylesheet" href="<?= $this->assetUrl('css/style-menu.css') ?>"> 
+
   </head>
   
   <body>
-  <div id="wrapper">
+  <div class="wrapper">
+
+
+
+
       <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
           <div class="container">
             <div class="container-fluid">
@@ -30,7 +36,7 @@
               </div>
           </div>
       </nav>
-  </div>
+
 
     <div class="container">
       <div class="row">
@@ -42,7 +48,7 @@
 
 
 
-
+  </div> <!-- END WRAPPER -->
 
   <footer>
     <div class="container">

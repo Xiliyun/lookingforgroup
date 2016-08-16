@@ -4,8 +4,8 @@ namespace Controller;
 
 use \W\Controller\Controller;
 
-use Model\Connexion\UserModel;
-use Model\Connexion\userConnexionModel;
+use Model\User\UserModel;
+use Model\User\userConnexionModel;
 
 
 class DeconnexionController extends Controller

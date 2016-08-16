@@ -1,41 +1,36 @@
 @import 'https://fonts.googleapis.com/css?family=Roboto';
 
-/*NAV BAR*/
+/*STYLE COMMUN A TOUT LE SITE*/
 
-
-/*Module de connexion*/
-
-
+html {
+	height: 100%;
+}
 
 /* BODY */
 body{
   font-family: 'Roboto', sans-serif;
-  color: white;
-
+/*  color: black;
+*/
 
   margin-top: 50px; /* Required margin for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
   padding:0;
-  background-color:#333333;
-  min-height: 100vh;
+  background-color:#fff;
 
+	height: 100%;
 }
 
-/*BLOC DE TEXTE 1*/
 
-
-
-
-
-
-
-
-
-
-
-
-footer {
-  text-align: center;
-    min-height: 30px;
-    width: 100%;
-    padding-top: 50px;
+.wrapper {
+  min-height: 100%;
+  height: 100%;
 }
+
+
+
+/* GESTION DES MESSAGES D'ERREUR*/
+p.errors {
+	color: #CF000F;
+}
+
+
+

@@ -1,0 +1,17 @@
+.column-same-height-container {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display:         flex;
+}
+
+.column-same-height-container > div{
+	display: flex;
+	flex-direction: column;
+
+}
+
+.column-same-height-container > div > .well{
+	height: 100%;
+
+}

@@ -18,8 +18,9 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
+      <link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>"> 
       <link rel="stylesheet" href="<?= $this->assetUrl('css/style-connexion-inscription.css') ?>"> 
-      <link rel="stylesheet" href="<?= $this->assetUrl('css/style-dropdown-connexion.css') ?>"> 
+      <link rel="stylesheet" href="<?= $this->assetUrl('css/style-menu.css') ?>"> 
 
 
 
@@ -31,9 +32,7 @@
           <div class="container">
               <?= $this->insert('templates/header/empty') ?>
               </div>
-          </div>
       </nav>
-  </div>
 
 <div>
   <?= $this->section('content_top') ?>
@@ -56,7 +55,8 @@
 </div>
 
 
-
+</div>
+<!-- end wrapper -->
 
 
 <footer>
@@ -77,8 +77,10 @@
 
 
   <script type="text/javascript" src="http://api.geonames.org/export/geonamesData.js?username=estheremiliefranck"></script>
-  <script src="<?= $this->assetUrl('js/inscription/geoname.js') ?>"></script>
+  <script src="<?= $this->assetUrl('js/inscription/pwstrength-bootstrap-2.0.1.js') ?>"></script>
   <script src="<?= $this->assetUrl('js/inscription/jsr_class.js') ?>"></script>
+
+  <script src="<?= $this->assetUrl('js/inscription/inscription.js') ?>"></script>  <!-- my script -->
 
 
 

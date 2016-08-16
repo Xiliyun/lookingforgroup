@@ -6,8 +6,8 @@ use \W\Controller\Controller;
 
 
 // pour la connexion directement dès la page d'accueil :)
-use Model\Connexion\UserModel;
-use Model\Connexion\userConnexionModel;
+use Model\User\UserModel;
+use Model\User\userConnexionModel;
 
 class DefaultController extends Controller
 {

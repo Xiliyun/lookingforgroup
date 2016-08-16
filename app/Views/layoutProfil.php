@@ -18,21 +18,23 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
+      <link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>"> 
+
       <link rel="stylesheet" href="<?= $this->assetUrl('css/style-profil.css') ?>"> 
+      <link rel="stylesheet" href="<?= $this->assetUrl('css/style-menu.css') ?>"> 
+
   </head>
   
   <body>
 
-    <div id="wrapper">
+    <div class="wrapper">
+
       <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
-            <div class="container-fluid">
             <?= $this->insert('templates/header/main') ?>
-            </div>
         </div>
       </nav>
-  </div>
-
+ 
 
     <div class="container">
       <div class="row">
@@ -46,6 +48,7 @@
 
 
           <div class="row profile">
+
             <div class="col-md-3">
               <div class="profile-sidebar">
 
@@ -93,21 +96,20 @@
 
 
   </div>
-</div> 
-<!-- end container -->
+</div> <!-- end container -->
 
 
+</div>
+<!-- End wrapper -->
 
 
-
-	<footer>
-		<div class="container">
-			<div class="row">
-
-
-			</div>
-		</div>
-	</footer>
+  <footer>
+    <div class="container">
+      <div class="row">
+          <?= $this->insert('templates/footer/simple') ?>
+      </div>
+    </div>
+  </footer>
 
 
 

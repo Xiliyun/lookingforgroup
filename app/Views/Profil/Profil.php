@@ -28,8 +28,10 @@ $cp = $userLocation['postal_code'];
 $country = $userLocation['country'];
 
 // Table user_info
-$description = $user_info['description'];
-$user_avatar = $user_info['user_avatar'];
+$description = $userInfo['description'];
+$user_avatar = $this->assetUrl('img/user/user_avatar/'.$userInfo['user_avatar']);
+$orientation = $userInfo['orientation'];
+
 
 // Table genre préféré (TODO)
 
@@ -54,7 +56,7 @@ if ($id_user == $w_user['id_user']) {
 <?php $this->start('profil-titre') ?>
   <?php if ($main_user): ?>
     <p><h1>Votre profil</h1>
-    <i class="glyphicon glyphicon-pencil"></i><a href="#">modifier les informations du profil</a></p>
+    <i class="glyphicon glyphicon-pencil"></i><a href="<?= $this->url('profil_settings',['id' => $w_user['id_user']]) ?>">modifier les informations du profil</a></p>
   <?php else: ?>
       <p><h1>Profil de <?= $username ?></h1></p>
   <?php endif; ?>
@@ -70,9 +72,9 @@ if ($id_user == $w_user['id_user']) {
 
     <!-- SIDEBAR USERPIC -->
     <div class="profile-userpic">
-    <?php if (empty($user_avatar) && ($gender == "m")): ?>
+    <?php if (empty($userInfo['user_avatar']) && ($gender == "m")): ?>
       <img class="img-responsive center-block" title ="user default avatar male" alt="user default avatar male" src="<?= $this->assetUrl('img/avatar_man.svg') ?>">
-    <?php elseif(empty($user_avatar) && ($gender == "f")): ?>
+    <?php elseif(empty($userInfo['user_avatar']) && ($gender == "f")): ?>
       <img class="img-responsive center-block" title ="user default avatar female" alt="user default avatar female" src="<?= $this->assetUrl('img/avatar_woman.svg') ?>">
     <?php else: ?>
       <img class="img-responsive center-block" alt="" src="<?= $user_avatar ?>">

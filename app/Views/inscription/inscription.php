@@ -5,7 +5,6 @@
 <?php $this->start('content_form') ?>
 <div id="container">
 	<form class="form-horizontal"  method="POST" > 
-	<!-- TODO envoyer le formulaire sur une page -->
 			<fieldset>
 			<legend class="text-center">Formulaire d'inscription</legend>
 				
@@ -13,7 +12,7 @@
 					<label class="col-md-4 control-label" for="username">Pseudo</label> 
 					<div class="col-md-4"> 
 						<input class="form-control input-md" id="username" name="username" type="text" placeholder="Pseudo" value="<?php if(isset($_POST["username"])) echo $_POST["username"]; ?>"> 
-						<p class="help-block"><?php if(isset($errors["username"])) echo $errors["username"]; ?></p>
+						<p class="help-block errors"><?php if(isset($errors["username"])) echo $errors["username"]; ?></p>
 					</div>			
 				</div>
 
@@ -24,7 +23,7 @@
 					<label class="col-md-4 control-label" for="email">Email</label>
 					<div class="col-md-4">   
 						<input class="form-control input-md" id="email" name="email" type="text" placeholder="Email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>"> 
-						<p class="help-block"><?php if(isset($errors["email"])) echo $errors["email"]; ?></p>  
+						<p class="help-block errors"><?php if(isset($errors["email"])) echo $errors["email"]; ?></p>  
 					</div>  	
 				</div>
 
@@ -33,8 +32,8 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="password">Mot de passe</label>
 					<div class="col-md-4">  
-						<input class="form-control input-md" id="password" name="password" type="password" placeholder="min 6 caractères, 1 chiffre" value="<?php if(isset($_POST["password"])) echo $_POST["password"]; ?>"> 
-						<p class="help-block"><?php if(isset($errors["password"])) echo $errors["password"]; ?></p>  
+						<input class="form-control input-md" id="password" name="password" type="password" placeholder="votre mot de passe" value="<?php if(isset($_POST["password"])) echo $_POST["password"]; ?>"> 
+						<p class="help-block errors"><?php if(isset($errors["password"])) echo $errors["password"]; ?></p>  
 					</div>  
 				</div>
 				
@@ -44,8 +43,8 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="passwordConfirm">Confirmation de mot de passe</label> 
 					<div class="col-md-4"> 
-						<input class="form-control input-md" id="passwordConfirm" name="passwordConfirm" type="password" placeholder="min 6 caractères, 1 chiffre" value=""> 
-						<p class="help-block"><?php if(isset($errors["passwordConfirm"])) echo $errors["passwordConfirm"]; ?></p>
+						<input class="form-control input-md" id="passwordConfirm" name="passwordConfirm" type="password" placeholder="confirmez votre mot de passe" value=""> 
+						<p class="help-block errors"><?php if(isset($errors["passwordConfirm"])) echo $errors["passwordConfirm"]; ?></p>
 					</div>  
 				</div>
 				
@@ -63,7 +62,7 @@
 					<label class="col-md-4 control-label" for="dob">Date de naissance</label> 
 					<div class="col-md-4"> 
 						<input class="form-control input-md" id="dob" name="dob" type="date" value="<?php if(isset($_POST["dob"])) echo $_POST["dob"]; ?>">   
-						<p class="help-block"><?php if(isset($errors["dob"])) echo $errors["dob"]; ?></p> 
+						<p class="help-block errors"><?php if(isset($errors["dob"])) echo $errors["dob"]; ?></p> 
 					</div> 
 				</div>
 				
@@ -73,7 +72,7 @@
 				<label class="col-md-4 control-label" for="lastname">Nom</label>  
 				<div class="col-md-4">
 					<input class="form-control input-md" id="lastname" name="lastname" type="text" placeholder="Nom" value="<?php if(isset($_POST["lastname"])) echo $_POST["lastname"]; ?>"> 
-					<p class="help-block"><?php if(isset($errors["lastname"])) echo $errors["lastname"]; ?></p>  
+					<p class="help-block errors"><?php if(isset($errors["lastname"])) echo $errors["lastname"]; ?></p>  
 				</div>  
 			</div>
 
@@ -83,7 +82,7 @@
 					<label class="col-md-4 control-label" for="firstname">Prénom</label> 
 					<div class="col-md-4">
 						<input class="form-control input-md" id="firstname" name="firstname" type="text" placeholder="Prénom" value="<?php if(isset($_POST["firstname"])) echo $_POST["firstname"]; ?>"> 
-						<p class="help-block"><?php if(isset($errors["firstname"])) echo $errors["firstname"]; ?></p>
+						<p class="help-block errors"><?php if(isset($errors["firstname"])) echo $errors["firstname"]; ?></p>
 					</div>   
 				</div>
 
@@ -99,9 +98,10 @@
 							<label class="col-md-4 control-label">
 								<input  type="radio" id="gender" name="gender" value="f"> Femme
 							</label>
-								<p class="help-block"><?php if(isset($errors["gender"])) echo $errors["gender"]; ?></p>
 
 						</div>
+						<p class="help-block errors"><?php if(isset($errors["gender"])) echo $errors["gender"]; ?></p>
+
 					</div>
 				</div>
 
@@ -115,7 +115,6 @@
 						<select class="form-control" id="countrySelect" name="country">
 							<option value="FR" selected>France</option>
 						</select>
-						<p class="hekp-block"><?php if(isset($errors["location"])) echo $errors["location"]; ?></p>
 					</div>
 				</div>
 				
@@ -125,7 +124,10 @@
 					<label class="col-md-4 control-label" for="postalcodeInput">Code postal</label>
 					<div class="col-md-4">
 						<input class="form-control input-md" id="postalcodeInput" name="postalcode" onblur="postalCodeLookup();" type="text" placeholder="Code postal"  value="<?php if(isset($_POST["postalcode"])) echo $_POST["postalcode"]; ?>">
+						<p class="help-block errors"><?php if(isset($errors["location"])) echo $errors["location"]; ?></p>
+
 					</div>
+
 				</div>
 				
 

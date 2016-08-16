@@ -1,57 +1,82 @@
-@import 'https://fonts.googleapis.com/css?family=Roboto';
 
 
 /*TODO un truc comme ça https://www.theinnercircle.co/ */
 
 
 /* BODY */
-body {
-	font-family: 'Roboto', sans-serif;
-	color: white;
-
-
-    margin-top: 50px; /* Required margin for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-	padding:0;
-	background-color:#333333;
-
-}
 
 body .header-image-bg {
-	box-shadow: inset 0 0 0 1000px rgba(0,0,0,.7);
+	box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
 	width:100%;
-	height:91vh;
+	height:100vh;
 
 	background-image: no-repeat;
 	background-size: cover;
+
 
 }
 
 body .header-image-bg .jumbotron {
 	background-color:transparent !important;
+	color: #fff;
 }
 body .header-image-bg div a {
 	text-decoration:none;
 }
 
 body .header-image-bg div #btnInscription {
-	border: 1px solid #47d9bf;
-	background-color: transparent;
+
+	background-color: #47d9bf;
 	color: white;
+
+	width: 60% ;
 
 }
 
 body .header-image-bg div #btnInscription:hover {
-	background-color: #47d9bf;
-	color: white;
+	border: 1px solid #47d9bf;
+	
+	background: rgba(255, 255, 255, 0.45);
+	color:#47d9bf;
+	transition: .4s ease;
 
-	transition: .2s ease;
   
 }
 
 
-/*BLOC DE TEXTE 1*/
+/*BLOC DE TEXTE DU HEADER*/
+.header-image-bg .flex-container-same-height {
+
+	margin-top: 10%;
+
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display:         flex;
 
 
+}
+.header-image-bg .content-header {
+	display: flex;
+	flex-direction: column;
+}
+
+.header-image-bg .content-header>div {
+	height: 100%;
+	background: rgba(255, 255, 255, 0.45);
+
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+.header-image-bg .content-header>div:hover {
+
+	transition: .4s ease;
+	background: rgba(255, 255, 255, 0.8);
+
+    box-shadow: 0px 0px 15px 15px rgba(71, 217, 191, 0.4);
+/*rgba(71, 217, 191, 0.4)*/
+}
 
 
 
