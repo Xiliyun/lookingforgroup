@@ -1,0 +1,31 @@
+.chat-dropup {
+	background-color: #47d9bf;
+	color: #616161;
+}
+
+.dropdown-menu {
+	border: none;
+	background-color: transparent;
+	margin: 0;
+}
+
+.chat-body {
+	    background-color:rgba(255, 255, 255, 0.6);
+
+}
+ 
+
+.panel-body.msg-wgt-body  {
+	height: 600px;
+	overflow-y: scroll;
+}
+
+.chat-header {
+	background-color: #47d9bf;
+
+}
+
+
+.chat-msg{
+	margin-bottom: 3%;
+}

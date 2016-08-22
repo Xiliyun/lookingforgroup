@@ -30,15 +30,11 @@ class ConnexionController extends Controller
 
 						// REMPLISSAGE DE S_SESSION AVEC LES DONNES UTILISATEURS RECUPEREES EN BASE
 						$db = new UserModel;
-						$db->setTable("user");
-						$db->setPrimaryKey("id_user");
-
-						$user = $db->find($id_user);
+						$user =	$db->getUserById($id_user);
 
 						$dbUser->logUserIn($user);
 
-
-						$this->redirectToRoute('accueil_accueil');
+						$this->redirectToRoute('profil_user', ['id' => $id_user]);
 
 					}
 					else {
@@ -62,6 +58,7 @@ class ConnexionController extends Controller
 		
 			if(isset($_POST['connexion']) && $_POST['connexion'] == 'Se connecter') {
 
+
 					// initialisation de la classe qui permet de vérifier l'utilisateur en BDD
 					$dbUser = new userConnexionModel;
 
@@ -74,19 +71,15 @@ class ConnexionController extends Controller
 
 						// REMPLISSAGE DE S_SESSION AVEC LES DONNES UTILISATEURS RECUPEREES EN BASE
 						$db = new UserModel;
-						$db->setTable("user");
-						$db->setPrimaryKey("id_user");
-
-						$user = $db->find($id_user);
+						$user =	$db->getUserById($id_user);
 
 						$dbUser->logUserIn($user);
 
 
-						$this->redirectToRoute('accueil_accueil');
+						$this->redirectToRoute('profil_user', ['id' => $id_user]);
 
 					}
 					else {
-						// TODO GERER L'ERREUR DE REDIRECTION ?!!!
 						$errors = "identifiant et/ou mot de passe incorrect(s) !";
 						$this->redirectToRoute('default_connexionerror', ['errors' => $errors]);
 

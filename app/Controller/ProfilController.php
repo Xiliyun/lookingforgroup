@@ -3,9 +3,14 @@
 namespace Controller;
 
 use \W\Controller\Controller;
+use \W\Security\AuthorizationModel;
 
 use Model\User\UserModel;
 use Model\User\UserConnexionModel;
+use Model\User\UserFriendsModel;
+use Model\Notifications\NotificationsModel;
+
+use Model\Gaming\GamingModel;
 
 // pour l'upload de photos
 use Model\Upload\UploadModel;
@@ -22,38 +27,197 @@ class ProfilController extends Controller
 
 	// AFFICHAGE DU PROFIL
 	public function userProfile($id) {
+		// CONTROLE DE SI UTILISATEUR CONNECTE OU NON
+		$security = new AuthorizationModel;
+		$security->isGranted(0);
 
 
-		// information de l'utilisateur => correspond à la table user.
-		//$MonObjetProfil = $this->getUser($_GET['id']);
-		//print_r($MonObjetProfil);
-
+		// /!\ data importante
+		// on récupère l'user du profil qu'on affiche (pas forcément user connecté)
 		$id_user = $id;
 
-		$db = new UserModel;
-		$db->setTable('user');
-		$db->setPrimaryKey('id_user');
-
-		$user = $db->find($id_user);
 
 		$db = new UserModel;
-		$db->setTable('user_info');
-		$db->setPrimaryKey('id_user');
+		$user 			=	$db->getUserById($id_user);
+		$userInfo 		= 	$db->getUserInfo($id_user);
+		$userLocation 	=   $db->getUserLocation($id_user);
 
-		$MesInfosDeProfil = $db->find($id_user);
 
-		$db = new UserModel;
-		$db->setTable('user_location');
-		$db->setPrimaryKey('id_user');
-
-		$LocalisationProfil = $db->find($id_user);
+		$notificationsDb = new notificationsModel;
 
 
 
+	///////////////////////////////////////////////////////////////////////////////////////////
+	// AJOUT D'AMIS
+	///////////////////////////////////////////////////////////////////////////////////////////
+		// l'utilisateur connecté, est le premier argument à passer
 
-		// TODO : récupérer le genre préféré !!!
+		$connected_user = $this->getUser();
+		$id_connected_user = $connected_user['id_user'];
+
+		$dbUserFriends = new UserFriendsModel;
+
+		if(isset($_POST['addFriend'])) {
+			$id_user_two = $id_user; // l'user two est celui sur lequel on se trouve
+			// en argument 1 : l'utilisateur connecté, en argument 2, l'utilisateur à ajouter
+			if($dbUserFriends->addUserToFriends($id_connected_user, $id_user_two) == true ) {
+				//echo "l'utilisateur a bien été ajoutey";
+				// todo passer la confirmation en argument
+				// //////////////////////////////////////////////////////
+				// CREATION D'UNE NOTIFICATION POUR L'UTILISATEUR ID_USER_TWO, la notification vient de l'utilisateur 1, c'est l'utilisateur 2 qui la reçoit
+				// //////////////////////////////////////////////////////
+				
+				$url = $this->generateUrl('profil_friends', ['id' => $id_user_two ]);
+				$details = "<a href='".$url."'>".$connected_user['username']." vous a envoyé une demande d'ami !</a>";
+				$id_notification = $notificationsDb->newNotification($details, $stripTags = false);
+
+				// insertion dans la notification de l'utilisateur
+				$data = array(
+					'id_user_notification' => null,
+					'id_notification' => $id_notification['id_notification'],
+					'id_user' => $id_user_two,
+					'status' => 0,
+					);
+
+				$notificationsDb->insertUserNewNotification($data);
+
+				$confirmation = true;
+				$this->redirectToRoute('profil_userConfirm', ['id'=>$id_user,'confirm' => $confirmation]);
+
+			}
+			else {
+				//"ils sont déjà amis";
+			}
+
+		}// end condition if du post
+
+
+		$isFriend = false;
+		$isRequestSent = false;
+		$isRequestReceived = false;
+		// TODO : affichage du statut d'ami avec le profil qu'on affiche
+		// case 1 : on est ami avec lui : ne pas afficher le bouton => isFriendWith && faire une suppression
+		$isFriend = $dbUserFriends->isFriend($id_connected_user, $id_user); // renvoie true si ils sont amis, false si non
+
+		// case 2 : on a envoyé une demande d'ami : afficher qu'on a fait la demande + au survol : annuler la demande => requestSent
+		$isRequestSent = $dbUserFriends->isRequestSent($id_connected_user, $id_user); // renvoie true si ils sont amis, false si non
+
+		// case 3 : on a reçu une demande d'ami : afficher demande d'ami + au survol : accepter la demande => requestReceived
+		$isRequestReceived = $dbUserFriends->isRequestReceived($id_connected_user, $id_user); // renvoie true si ils sont amis, false si non
+
+		if(isset($_POST['accepter'])) {
+			$id_friend =  $_POST['accepter'];
+			$friend_username = $dbUserFriends->getUsername($id_friend);
+			$friend_username = $friend_username['username'];
+
+			$dbUserFriends->acceptFriendRequest($id_connected_user, $id_friend);
+
+			$confirmation = 'accepted';
+			$this->redirectToRoute('profil_userConfirm', ['id'=>$id_user,'confirm' => $confirmation]);
+
+
+		}
+		if(isset ($_POST['supprimer'])) {
+			$id_friend = $_POST['supprimer'];
+			$friend_username = $dbUserFriends->getUsername($id_friend);
+			$friend_username = $friend_username['username'];
+
+			$dbUserFriends->deleteFriend($id_friend, $id_connected_user);
+
+			$confirmation = 'deleted';
+			$this->redirectToRoute('profil_userConfirm', ['id'=>$id_user,'confirm' => $confirmation]);
+
+		}
+		// OPTION ANNULER LA DEMANDE QU'ON A ENVOYE
+		if(isset ($_POST['annuler'])) {
+			$id_friend = $_POST['annuler'];
+			$friend_username = $dbUserFriends->getUsername($id_friend);
+			$friend_username = $friend_username['username'];
+
+			$dbUserFriends->deleteFriend($id_friend, $id_connected_user);
+
+			$confirmation = 'canceled';
+			$this->redirectToRoute('profil_userConfirm', ['id'=>$id_user,'confirm' => $confirmation]);
+
+		}
+
+		///////////////////////////////////////////////////////////////////////////////////////////
+		// AFFICHAGE DU GENRE DE JEUX FAVORI
+		///////////////////////////////////////////////////////////////////////////////////////////
+
+		$dbGenre = new GamingModel;
+		$userGenreFav = $dbGenre->findUserGenreFavById($id_user);
+
+
+		///////////////////////////////////////////////////////////////////////////////////////////
+		// RECUPERATION ET AFFICHAGE DES MEMBRES QUI AIMENT LES MEMES GENRE DE JEU
+		///////////////////////////////////////////////////////////////////////////////////////////
+		// Etape 1 : récupérer tosu les genres de mon membre (voir ci dessus)
+		// Etape 2 : récupérer tous les membres qui ont le même genre DANS UNE BOUCLE
+		$other_user_id= array();
+		$user_id = array();
+		$shared_genre_user_data = array();
+
+		foreach ($userGenreFav as $key => $genre) {
+			$id_genre = $genre['id_genre'];
+			$genre_name = $genre['genre_name'];
+
+			$genre_array_others = $dbGenre->findUserGenreFavByGenre($id_genre);
+			//print_r($genre_array_others);
+			foreach ($genre_array_others as $key => $genre_others) {
+				$other_user_id[] = ($genre_others['id_user']);
+			}
+		}
+		$shared_genre_nb = array_count_values ($other_user_id ); 
+		// ce dernier tableau nous intéresse car il a ET les user id ET le nombre de répétitions 
+
+		$other_user_id = array_unique($other_user_id);
+		foreach ($other_user_id as $key => $value) {
+			if($value != $id_user) { // on n'a pas besoin d'afficher le profil en cours
+
+				$sharedUser = 	$db->getUserById($value);
+				$sharedUserInfo = 	$db->getUserInfo($value);
+				$sharedUserLocation =    $db->getUserLocation($value);
+				$sharedUser_genre_nb = $shared_genre_nb[$value] ;
+				$shared_genre_user_data[] = array(
+					'user' => $sharedUser,
+					'userInfo' => $sharedUserInfo,
+					'userLocation' => $sharedUserLocation,
+					'shared_genre_nb' => $sharedUser_genre_nb ,
+
+					);
+
+			}
+		}
+		//print_r($shared_genre_user_data);
+		//print_r($genre_array_others);
+		//Au final afficher la liste par type de genre le nombre d'utilisateurs qui aiment les mêmes jeux
+
+
+
+		//////////////////////////////////////////////////////////////////////////////////////////////////////// show de base du profil
+
+
+		
+
+
+
+
 		if(!empty($user)) {
-			$this->show('Profil/profil',['user'=>$user,'userInfo'=>$MesInfosDeProfil,'userLocation'=>$LocalisationProfil ]);
+			$this->show('Profil/profil',[
+									'user'=>$user,
+									'userInfo'=>$userInfo,
+									'userLocation'=>$userLocation,
+
+									// ICI on passe les arguments de s'ils ont amis ou non
+									'isFriend'=>$isFriend,
+									'isRequestSent'=>$isRequestSent,
+									'isRequestReceived'=>$isRequestReceived,
+
+									// genre de jeux favoris
+									'userGenreFav' => $userGenreFav,
+									'sharedGenreFav' => $shared_genre_user_data,
+						]);
 		}
 		else { // pour quand on essaye d'afficher un utilisateur qui n'existe pas !!
 			$this->showForbidden();
@@ -62,495 +226,136 @@ class ProfilController extends Controller
 	}
 
 
-///////////////////////////////////////////////////////////////////////////////////////////
-// ESPACE DE MODIFICATION DU PROFIL / dashboard
-///////////////////////////////////////////////////////////////////////////////////////////
-	public function settings() {
-		$this->show('Profil/settings/dashboard_user');
+	
+	///////////////////////////////////////////////////////////////////////////////////////////
+	// Affichage et gestion des amis
+	///////////////////////////////////////////////////////////////////////////////////////////
+	public function friends ($id) {
+		// CONTROLE DE SI UTILISATEUR CONNECTE OU NON
+		$security = new AuthorizationModel;
+		$security->isGranted(0);
+		///////////////////////
+
+
+		$id_user = $id;
+
+		$db = new UserModel;
+		$user 			=	$db->getUserById($id_user);
+		$userInfo 		= 	$db->getUserInfo($id_user);
+		$userLocation 	=   $db->getUserLocation($id_user);
+
+
+
+		$connected_user = $this->getUser();
+		$id_connected_user = $connected_user['id_user'];
+
+		$dbUserFriends = new UserFriendsModel;
+		// récupération de la table amis DE L'UTILISATEUR CONNECTE / PRINCIPAL
+		//print_r($friends_array);
+
+		////////////////////////////////////////////////////////////////////////////////
+		// STATUS = 0 // RECUPERATION DES REQUETES & AJOUT OU ANNULATION
+		////////////////////////////////////////////////////////////////////////////////
+
+		$friend_request_sent = "";
+		$friend_request_received = "" ;
+
+		$friend_request_sent = $dbUserFriends->getFriendRequestsSent($id_connected_user);
+		$friend_request_received = $dbUserFriends->getFriendRequestsReceived($id_connected_user);
+
+
+
+		//	OPTION : ACCEPTER/ REFUSER LA DEMANDE
+		if(isset($_POST['accepter'])) {
+			$id_friend =  $_POST['accepter'];
+			$friend_username = $dbUserFriends->getUsername($id_friend);
+			$friend_username = $friend_username['username'];
+
+			$dbUserFriends->acceptFriendRequest($id_connected_user, $id_friend);
+
+			$confirmation = 'accepted';
+			$this->redirectToRoute('profil_friendsConfirm', ['confirm' => $confirmation, 'id' => $id_connected_user, 'friend_username' => $friend_username]);
+
+
+		}
+		if(isset($_POST['refuser'])) {
+
+			// delete
+			$id_friend = $_POST['refuser'];
+			$friend_username = $dbUserFriends->getUsername($id_friend);
+			$friend_username = $friend_username['username'];
+
+			$dbUserFriends->deleteFriend($id_connected_user, $id_friend);
+
+
+			$confirmation = 'refused';
+			$this->redirectToRoute('profil_friendsConfirm', ['confirm' => $confirmation, 'id' => $id_connected_user, 'friend_username' => $friend_username]);
+
+		}
+		// OPTION ANNULER LA DEMANDE QU'ON A ENVOYE
+		if(isset ($_POST['annuler'])) {
+			$id_friend = $_POST['annuler'];
+			$friend_username = $dbUserFriends->getUsername($id_friend);
+			$friend_username = $friend_username['username'];
+
+			$dbUserFriends->deleteFriend($id_friend, $id_connected_user);
+
+			$confirmation = 'canceled';
+			$this->redirectToRoute('profil_friendsConfirm', ['confirm' => $confirmation, 'id' => $id_connected_user, 'friend_username' => $friend_username]);
+
+		}
+
+
+
+		////////////////////////////////////////////////////////////////////////////////
+		// STATUS = 1 // RECUPERATION ET AFFICHAGE DES AMIS + SUPPRESSION (uniquement main_user)
+		////////////////////////////////////////////////////////////////////////////////
+		//NOTE : LA SELECTION SE FAIT SELON L'ID DU PROFIL CAR ON AFFICHE LES AMIS DU PROFIL
+		$friend_list = "";
+
+		$friend_list = $dbUserFriends->getUserFriends($id_user);
+
+
+		if(isset ($_POST['supprimer'])) {
+			$id_friend = $_POST['supprimer'];
+			$friend_username = $dbUserFriends->getUsername($id_friend);
+			$friend_username = $friend_username['username'];
+
+			$dbUserFriends->deleteFriend($id_friend, $id_connected_user);
+
+			$confirmation = 'deleted';
+			$this->redirectToRoute('profil_profilConfirm', ['confirm' => $confirmation, 'id' => $id_connected_user, 'friend_username' => $friend_username]);
+
+		}
+
+
+
+
+
+
+
+
+
+		if(!empty($user)) {
+							$this->show('Profil/friends',[
+										'user'=>$user,
+										'userInfo'=>$userInfo,
+										'userLocation'=>$userLocation, 
+										'friend_request_sent' =>$friend_request_sent,
+										'friend_request_received' => $friend_request_received ,
+										'friend_list' => $friend_list,
+
+										]);
+		}
+		else { // pour quand on essaye d'afficher un utilisateur qui n'existe pas !!
+			$this->showForbidden();
+		}
+
 	}
 
-	public function accountInfo() {
-		//////////////////// RECUPERATION DES INFO DE L'UTILISATEUR CONNECTE
-		$connected_user = $this->getUser();
-		$id_connected_user = $connected_user['id_user'];
 
-		$dbUser = new UserModel;
-		$dbUser->setTable('user');
-		$dbUser->setPrimaryKey('id_user');
 
-		$user = $dbUser->find($id_connected_user);
 
-		//print_r($user);
-
-		///////////////////// MODIFICATIONS
-		////1) INFO DU PROFIL
-		$errors = array();
-
-		if(isset($_POST['modifierInfo']) && $_POST['modifierInfo'] == "modifier vos informations") {
-			$username = $_POST["username"];
-			$email = $_POST["email"];
-
-			// verification des erreurs
-
-			if(empty($username)) {
-				$errors['username'] = 'Veuillez remplir ce champs';		
-			}else if(strlen($username) < 3){
-				$errors['username'] = 'Votre pseudo doit comporter au moins 3 caractères';		
-			}else if(strlen($username) > 45) {
-				$errors['username'] = 'Votre pseudo est trop long !(45 caractères max)';
-			}else if(ctype_space ($username)) {
-				$errors['username'] = 'Merci de ne pas entrer uniquement des espaces';
-			}else if(preg_match('/\s/',$username)) {
-				$errors['username'] = 'Merci de ne pas utiliser d\'espaces dans votre pseudo';
-			}
-			else { // vérification de l'existence en base
-
-				if($dbUser->usernameExists($username) && $username != $user['username']) {
-					$errors['username'] = 'Ce nom d\'utilisateur existe déjà !';
-				}
-			}
-
-			//verification email
-			if(empty($email)) {
-				$errors['email'] = 'Veuillez remplir ce champs';		
-			}
-			elseif(!filter_var($email,FILTER_VALIDATE_EMAIL)) {
-				$errors['email'] = 'Veuillez entrer un email valide';		
-			}
-			else {
-				if($dbUser->emailExists($email) && $email != $user['email']) {
-					$errors['email'] = 'Cet email existe déjà !';		
-				}
-			}
-
-
-			//////// update profil /////////
-			if(empty($errors)) {
-				$data = array(
-					"username"				=> $username,
-					"email"					=> $email,
-				);
-				$update = $dbUser->update($data, $id_connected_user, $stripTags = true);
-				$confirmation = true;
-				$this->redirectToRoute('profil_accountInfoConfirm', ['confirm' => $confirmation]);
-			}
-
-		}// END IF($_POST) MODIFICATION INFO
-
-
-		//// 2) MOT DE PASSE
-		if(isset($_POST['modifierPassword']) && $_POST['modifierPassword'] == "modifier votre mot de passe") {
-
-			$currentPassword =  $_POST['currentPassword'];
-			$newPassword = $_POST['newPassword'];
-			$newPasswordConfirm = $_POST['newPasswordConfirm'];
-
-
-			$user_connexion = new UserConnexionModel;
-			// Verification que le mot de passe entré correspond au mot de passe du compte
-			if(($user_connexion->isValidLoginInfo($user['username'], $currentPassword)) != $user['id_user']) {
-				$errors['password'] = 'Le mot de passe entré ne correspond pas à votre mot de passe actuel';
-			}
-
-			//verification nouveau mot de passe
-			if(empty($newPassword)) {
-				$errors['newPassword'] = 'Veuillez remplir ce champs';		
-			}
-			if(empty($_POST['newPasswordConfirm'])) {
-				$errors['newPasswordConfirm'] = 'Veuillez confirmer votre mot de passe';		
-			}else if($_POST['newPasswordConfirm'] != $_POST['newPassword']) {
-				$errors['newPasswordConfirm'] = 'Vos mots de passe ne se correspondent pas';		
-			}
-
-
-			/////////// INSERTION EN BASE
-			if(empty($errors)) {
-				$data = array(
-					"password"			=> password_hash($newPassword, PASSWORD_DEFAULT)
-				);
-				$update = $dbUser->update($data, $id_connected_user, $stripTags = true);
-				$confirmation = true;
-				$this->redirectToRoute('profil_accountInfoConfirm', ['confirm' => $confirmation]);
-			}
-
-
-
-		} // END IF ISSET MOT DE PASSE
-
-
-
-
-
-	//////////////////// AFFICHAGE
-	$this->show('Profil/settings/account_info' , ['user' => $user, 'errors' => $errors]);
-	} // END FONCTION MODIFICATION ACCOUNT INFO (page votre compte)
-
-
-	public function userInfo () {
-		//////////////////// RECUPERATION DES INFO DE L'UTILISATEUR CONNECTE
-		$connected_user = $this->getUser();
-		$id_connected_user = $connected_user['id_user'];
-
-		//1) connexion aux tables
-		$dbUser = new UserModel;
-		$dbUser->setTable('user');
-		$dbUser->setPrimaryKey('id_user');
-
-		$dbUserInfo = new UserModel;
-		$dbUserInfo->setTable('user_info');
-		$dbUserInfo->setPrimaryKey('id_user');
-
-		$dbUserLocation = new UserModel;
-		$dbUserLocation->setTable('user_location');
-		$dbUserLocation->setPrimaryKey('id_user');
-
-		// 2) création des variables
-		$user = $dbUser->find($id_connected_user);
-		$userInfo = $dbUserInfo->find($id_connected_user);
-		$userLocation = $dbUserLocation->find($id_connected_user);
-
-
-
-
-		///////////////////// 5) MODIFICATIONS
-
-		$errors = array();
-		//// a) modifierDescription
-		if(isset($_POST['modifierDescription']) && $_POST['modifierDescription'] == "modifier") {
-			$description = $_POST['description'];
-
-			if(strlen($description) > 1000) {
-				$errors["description"] = "Merci de ne pas dépasser 1000 caractères pour votre description";
-			}
-
-			//insertion base
-			if(empty($errors)) {
-				// ici gérer que si la table est vide (uniquement pour la table user info), il faut faire un insert, sinon, un update ...
-				if(empty($userInfo)) {
-
-					$data = array(
-						"id_user"				=> $id_connected_user,
-						"orientation"			=> null,
-						"id_battlenet"			=> null,
-						"id_psn"				=> null,	
-						"id_lol"				=> null, 
-						"id_xbox_live"			=> null,	
-						"id_steam"				=> null, 
-						"description"			=> $description, 
-						"user_avatar"			=> null	
-					);
-					$insert = $dbUserInfo->insert($data, $stripTags = true);
-					$confirmation = true; 
-
-				}
-				else {
-					$data = array(
-						"description"			=> $description,
-					);
-					$update = $dbUserInfo->update($data, $id_connected_user, $stripTags = true);
-					$confirmation = true;
-				}
-				$this->redirectToRoute('profil_userInfoConfirm', ['confirm' => $confirmation]);
-			} // end if empty errors
-		}
-
-
-		//// b) modifierNom
-		if(isset($_POST['modifierNom']) && $_POST['modifierNom'] == "modifier"){
-			$firstname = $_POST['firstname'];
-			$lastname = $_POST['lastname'];
-
-			//verification firstname
-			if(empty($firstname)) {
-				$errors['firstname'] = 'Veuillez remplir ce champs';		
-			}
-			else if(strlen($firstname) < 2){
-				$errors['firstname'] = 'Votre prénom doit comporter au moins 2 caractères';		
-			}else if(strlen($firstname) > 45) {
-				$errors['firstname'] = 'Votre prénom est trop long !(45 caractères max)';
-			}
-			else if(!ctype_alpha($firstname)) {
-				$errors['firstname'] = 'votre prénom ne peut contenir ni de caractères spéciaux, ni de chiffres, ni d\'espace';
-			} // ne marche pas
-
-
-			// verification lastname
-			if(empty($lastname)) {
-				$errors['lastname'] = 'Veuillez remplir ce champs';		
-			}
-			else if(strlen($lastname) < 2){
-				$errors['lastname'] = 'Votre nom doit comporter au moins 2 caractères';		
-			}else if(strlen($lastname) > 45) {
-				$errors['lastname'] = 'Votre nom est trop long !(45 caractères max)';
-			}
-			else if(!ctype_alpha($lastname)) {
-				$errors['lastname'] = 'votre prénom ne peut contenir ni de caractères spéciaux, ni de chiffres, ni d\'espace';
-			}
-
-			//insertion base
-			if(empty($errors)) {
-				// le prénom est forcément entré à l'inscription, donc juste besoin d'un update
-				$data = array(
-					"firstname"			=> $firstname,
-					"lastname"			=> $lastname,
-				);
-				$update = $dbUser->update($data, $id_connected_user, $stripTags = true);
-
-				$confirmation = true;
-				$this->redirectToRoute('profil_userInfoConfirm', ['confirm' => $confirmation]);
-			} // end if empty errors
-
-
-		}
-
-
-		//// c) modifierAge
-		if(isset($_POST['modifierAge']) && $_POST['modifierAge'] == "modifier"){
-			$dob = $_POST['dob'];
-
-			if(empty($dob)) {
-				$errors['dob'] = 'Veuillez entrer votre date de naissance';
-			}
-			else if(isset($dob)) {
-				if((DateTime::createFromFormat('Y-m-d', $dob)->diff(new DateTime('now'))->y) < 18) {
-					$errors['dob'] = 'Vous devez avoir plus de 18 ans pour être membre de ce site, auriez vous menti lors de votre inscription?';
-				}
-			}
-
-			if(empty($errors)) {
-				// le prénom est forcément entré à l'inscription, donc juste besoin d'un update
-				$data = array(
-					"dob"			=> $dob,
-				);
-				$update = $dbUser->update($data, $id_connected_user, $stripTags = true);
-
-				$confirmation = true;
-				$this->redirectToRoute('profil_userInfoConfirm', ['confirm' => $confirmation]);
-			} // end if empty errors
-
-		}
-
-
-		//// d) modifierLocation
-		if(isset($_POST['modifierLocation']) && $_POST['modifierLocation'] == "modifier"){
-			$city = $_POST["city"];
-			$region = $_POST["region"];
-			$postal_code = $_POST["postalcode"];
-			$country = $_POST["country"];
-			$lat = $_POST["lat"];
-			$lng = $_POST["lng"];
-
-			// verification que l'utilisateur a bien entré son adresse
-			if(empty($postal_code)) {
-				$errors['location'] = "Veuillez sélectionner votre ville grâce au code postal";
-			}
-			else if(strlen($postal_code) != 5) {
-				$errors['location'] = "Veuillez entrer un code postal valide (ex : 75001)";
-			}		
-			else if(empty($city)) {
-				$errors['location'] = "Veuillez sélectionner votre ville grâce au code postal";
-			}
-
-			if(empty($errors)) {
-				// TODO gérer problème s'il change son code postal sans changer sa ville ?! :/
-
-				$data = array(
-				"city"					=> $city,
-				"region"				=> $region,
-				"postal_code"			=> $postal_code,
-				"country"				=> $country,
-				"lat"					=> $lat,
-				"lng"					=> $lng,
-				);
-
-				$update = $dbUserLocation->update($data, $id_connected_user, $stripTags = true);
-
-				$confirmation = true;
-				$this->redirectToRoute('profil_userInfoConfirm', ['confirm' => $confirmation]);
-			} // end if empty errors
-		
-		}
-
-
-		//// e) modifierSexeOrientation
-		if(isset($_POST['modifierSexeOrientation']) && $_POST['modifierSexeOrientation'] == "modifier"){
-
-			$gender = $_POST['gender'];
-			$orientation = $_POST['orientation'];
-
-			// normalement pas de probleme du genre possible mais sait-on jamais :)
-			if(!isset($_POST["gender"])) {
-				$errors['gender'] = 'Êtes vous un homme ou une femme? Veuillez préciser votre sexe';
-			}
-
-			if(empty($errors)) {
-				$data = array(
-				"gender"				=> $gender,
-				);
-
-				$update = $dbUser->update($data, $id_connected_user, $stripTags = true);
-
-				if(empty($userInfo)) {
-
-						$data = array(
-							"id_user"				=> $id_connected_user,
-							"orientation"			=> $orientation,
-							"id_battlenet"			=> null,
-							"id_psn"				=> null,	
-							"id_lol"				=> null, 
-							"id_xbox_live"			=> null,	
-							"id_steam"				=> null, 
-							"description"			=> null, 
-							"user_avatar"			=> null	
-						);
-						$insert = $dbUserInfo->insert($data, $stripTags = true);
-						$confirmation = true; 
-
-					}
-					else {
-
-						$data = array(
-						"orientation"				=> $orientation,
-						);
-
-						$update = $dbUserInfo->update($data, $id_connected_user, $stripTags = true);
-
-						$confirmation = true;
-					}
-
-				$confirmation = true;
-				$this->redirectToRoute('profil_userInfoConfirm', ['confirm' => $confirmation]);
-			} // end if empty errors
-
-		}
-
-
-		//// d) modifierBut
-		if(isset($_POST['modifierBut']) && $_POST['modifierBut'] == "modifier"){
-
-			$friendship = $_POST["friendship"];
-			$love = $_POST["love"];
-
-			$data = array(
-			"friendship"			=> $friendship,
-			"love"					=> $love,
-			);
-
-			$update = $dbUser->update($data, $id_connected_user, $stripTags = true);
-
-			$confirmation = true;
-			$this->redirectToRoute('profil_userInfoConfirm', ['confirm' => $confirmation]);
-		}
-
-
-
-		//// 6)ajout de photo
-		//*********************************************************
-		// utilisation de https://github.com/verot/class.upload.php
-		//*********************************************************
-		if(isset($_POST['uploadAvatar']) && $_POST['uploadAvatar'] == "Uploader") {
-
-			$avatar_path = 'assets/img/user/user_avatar';
-			// TODO trouver un truc pour remplacer la racine?
-
-			$handle = new UploadModel($_FILES['image_field']);
-
-
-			if($_FILES['image_field']['error'] == 1) {
-					$errors['avatar'] = "Echec du téléchargement : votre image dépasse la taille max autorisée (2Mo)";
-			}
-
-			if ($handle->uploaded) {
-
-				// paramètres de l'upload
-				$handle->file_new_name_body   = 'user_avatar';
-				$handle->file_name_body_pre 	= $id_connected_user."_";
-				$handle->image_max_width = 2000;
-				$handle->image_max_height = 2000;
-				$handle->allowed = array('image/*');
-				$handle->file_overwrite = true;
-				// $handle->file_max_size = '2097152';
-
-
-				//verification des erreurs AVANT de faire le process
-
-				if($handle->file_is_image == 0){
-					$errors['avatar'] = "Echec du téléchargement : seules les images sont autorisées (jpeg, jpg, gif, png, bmp)";
-				}
-
-				if($handle->image_src_x > 2000) {
-					$errors['avatar'] = "Echec du téléchargement : Votre image est trop large ! (2000px max)";
-				}
-				if($handle->image_src_y > 2000) {
-					$errors['avatar'] = "Echec du téléchargement : Votre image est trop haute ! (2000px max)";
-				}
-
-
-
-				// si pas d'erreurs call du process = upload
-				if(empty($errors)) {
-
-					$handle->Process($avatar_path);
-					if ($handle->processed) {
-					$user_avatar = $handle->file_dst_name;
-
-
-						// ici gérer que si la table est vide(ex: premiere connexion) (uniquement pour la table user info), il faut faire un insert, sinon, un update ET on unlink le lien précédent ...
-						if(empty($userInfo)) {
-
-							$data = array(
-								"id_user"				=> $id_connected_user,
-								"orientation"			=> null,
-								"id_battlenet"			=> null,
-								"id_psn"				=> null,	
-								"id_lol"				=> null, 
-								"id_xbox_live"			=> null,	
-								"id_steam"				=> null, 
-								"description"			=> null, 
-								"user_avatar"			=> $user_avatar,
-							);
-							$insert = $dbUserInfo->insert($data, $stripTags = true);
-							$confirmation = true; 
-
-						}
-						else {
-							$data = array(
-								"user_avatar"			=> $user_avatar,
-							);
-							$update = $dbUserInfo->update($data, $id_connected_user, $stripTags = true);
-							$confirmation = true;
-						}
-
-
-
-						$handle->clean();
-						$this->redirectToRoute('profil_userInfoConfirm', ['confirm' => $confirmation]);
-
-					} 
-					else {
-					echo 'Echec du téléchargement de la photo' . $handle->error;
-					}
-
-					
-
-
-
-
-				}// end if empty errors
-				
-				// notes : si on ajoute un nouveau fichier (= c'est un update), on efface l'ancien en mémoire avec unlink()
-
-			}// end handle uploaded
-
-
-		}// end upload images
-
-
-
-	//////////////////// 3) envoi en AFFICHAGE
-	$this->show('Profil/settings/user_info', ['user' => $user, 'userInfo' => $userInfo, 'userLocation' => $userLocation,'errors' => $errors]);
-
-	}// END FONCTION MODIFICATION INFO PERSONNELLES(page informations personnelles)
 
 
 

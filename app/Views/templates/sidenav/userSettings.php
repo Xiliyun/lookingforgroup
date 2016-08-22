@@ -5,7 +5,7 @@
           <!-- Pseudo, email -->
           <li><a href="<?= $this->url('profil_userInfo',['id' => $w_user['id_user']]) ?>">Vos informations personnelles</a></li>
           <!-- nom, prenom, age, orientation sexuelle, pourquoi je suis ici -->
-          <li><a href="#section3">Votre vie de gamer</a></li>
+          <li><a href="<?= $this->url('profil_userGaming',['id' => $w_user['id_user']]) ?>">Votre vie de gamer</a></li>
           <!-- genre préférés -->
         </ul>
         
