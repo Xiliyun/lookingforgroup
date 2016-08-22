@@ -8,20 +8,20 @@ use Model\Notifications\NotificationsModel;
 
 class NotificationController extends Controller {
 
-	public function updateNotifications() {
+	// public function updateNotifications() {
 
-	$connected_user = $this->getUser();
-	$id_connected_user = $connected_user['id_user'];
+	// $connected_user = $this->getUser();
+	// $id_connected_user = $connected_user['id_user'];
 
-	$notificationsDb = new notificationsModel;
-	$new_notifications = $notificationsDb->checkNotifications($id_connected_user);
-
-
+	// $notificationsDb = new notificationsModel;
+	// $new_notifications = $notificationsDb->checkNotifications($id_connected_user);
 
 
-	$this->show('templates/header/main', ['my_notifications' => $new_notifications]);
 
-	}
+
+	// $this->show('templates/header/main', ['my_notifications' => $new_notifications]);
+
+	// }
 
 
 	public function get_notifications() {
@@ -32,10 +32,10 @@ class NotificationController extends Controller {
 		$notificationsDb = new notificationsModel;
 		$new_notifications = $notificationsDb->checkNotifications($id_connected_user);
 
-
 		print_r($new_notifications);
+		echo ' ça me saoule';
 
-		$this->show('templates/header/main', ['new_notifications' => "bonjour"]);
+		$this->show('templates/header/main', ['new_notifications' => $new_notifications]);
 
 
 

@@ -73,6 +73,7 @@ class NotificationsModel extends \W\Model\Model {
 			return $this->find($this->lastInsertId());
 		}
 
+
 	public function checkNotifications ($id) {
 			$this->setTable('user_notification');
 			$this->setPrimaryKey('id_user_notification');

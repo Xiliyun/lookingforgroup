@@ -224,7 +224,7 @@ if ($id_user == $w_user['id_user']) {
                               if($friend['id_user_one'] == $w_user['id_user']) { $id_friend = $friend['id_user_two'] ;}
                               else ($id_friend = $friend['id_user_one']);
                               ?>
-                              <a class="thumbnail pull-left" href="<?= $this->url('profil_user', ['id' => $id_friend]) ?>">
+                              <a class="thumbnail" href="<?= $this->url('profil_user', ['id' => $id_friend]) ?>">
 
 
 
@@ -306,7 +306,7 @@ if ($id_user == $w_user['id_user']) {
   				                <div class="media">
 
   				                <!-- Le lien sera le profil de l'utilisateur -->
-  				                    <a class="thumbnail pull-left" href="<?= $this->url('profil_user', ['id' => $received['id_user_one'] ]) ?>">
+  				                    <a class="thumbnail" href="<?= $this->url('profil_user', ['id' => $received['id_user_one'] ]) ?>">
   										<?php if (empty($received['userInfo']['user_avatar']) && ($received['user']['gender'] == "m")): ?>
   										<img class="media-object" title ="user default avatar male" alt="user default avatar male" src="<?= $this->assetUrl('img/avatar_man.svg') ?>">
   										<?php elseif(empty($received['userInfo']['user_avatar']) && ($received['user']['gender'] == "f")): ?>
@@ -358,7 +358,7 @@ if ($id_user == $w_user['id_user']) {
   			            <div class="well well-sm">
   			                <div class="media">
   			                <!-- Le lien sera le profil de l'utilisateur -->
-  			                    <a class="thumbnail pull-left" href="<?= $this->url('profil_user', ['id' => $sent['id_user_two'] ]) ?>">
+  			                    <a class="thumbnail" href="<?= $this->url('profil_user', ['id' => $sent['id_user_two'] ]) ?>">
   									<?php if (empty($sent['userInfo']['user_avatar']) && ($sent['user']['gender'] == "m")): ?>
   									<img class="media-object" title ="user default avatar male" alt="user default avatar male" src="<?= $this->assetUrl('img/avatar_man.svg') ?>">
   									<?php elseif(empty($sent['userInfo']['user_avatar']) && ($sent['user']['gender'] == "f")): ?>

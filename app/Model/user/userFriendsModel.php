@@ -7,20 +7,20 @@ class UserFriendsModel extends UserModel {
 	private $_friends_array;
 
 
-	// extension des fonctions de recherche
-	public function findAll($id)
-	{
-			if (!is_numeric($id)){
-				return false;
-			}
+	// // extension des fonctions de recherche
+	// public function findAll($id)
+	// {
+	// 		if (!is_numeric($id)){
+	// 			return false;
+	// 		}
 
-			$sql = 'SELECT * FROM ' . $this->table . ' WHERE ' . $this->primaryKey .'  = :id LIMIT 1';
-			$sth = $this->dbh->prepare($sql);
-			$sth->bindValue(':id', $id);
-			$sth->execute();
+	// 		$sql = 'SELECT * FROM ' . $this->table . ' WHERE ' . $this->primaryKey .'  = :id LIMIT 1';
+	// 		$sth = $this->dbh->prepare($sql);
+	// 		$sth->bindValue(':id', $id);
+	// 		$sth->execute();
 
-			return $sth->fetchAll();
-	}
+	// 		return $sth->fetchAll();
+	// }
 
 	public function searchSqlQuery($sql) {
 

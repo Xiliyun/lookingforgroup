@@ -1,4 +1,10 @@
-
+/*body{
+  height: auto;
+}
+*/
+.row.profil {
+  height: initial;
+}
 .container .profil-titre h1 {
   display: inline-block;
   color : #292F36;

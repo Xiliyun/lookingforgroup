@@ -19,7 +19,6 @@
 		<ul class="nav navbar-nav">
 			<li><a href="<?= $this->url('accueil_accueil') ?>">Accueil</a></li>
 			<li><a href="<?= $this->url('recherche_recherche') ?>">Recherche</a></li>
-			<li><a href=""></a></li>
 		</ul>
 
 
@@ -36,12 +35,11 @@
 		<!-- AFFICHAGE NOTIFICATIONS -->
 
 		<li class="dropdown">
+			<?php print_r($new_notifications) ?>
 
         	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o" aria-hidden="true"></i></a>
 			<ul class="dropdown-menu notifications-dropdown">
 				<!-- ici on affichera les notifications -->
-				CA NE MARCHE PAAAAAAAAAaaaaAaaAaaAgrhghdfhgoigjdfigjxohgS
-			<?php print_r($new_notifications) ?>
 	        </ul>
 
 

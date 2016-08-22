@@ -157,20 +157,23 @@ class ProfilController extends Controller
 		$other_user_id= array();
 		$user_id = array();
 		$shared_genre_user_data = array();
-
 		foreach ($userGenreFav as $key => $genre) {
 			$id_genre = $genre['id_genre'];
 			$genre_name = $genre['genre_name'];
+
 			//selection random
 			$genre_array_others = $dbGenre->findUserGenreFavByGenre($id_genre);
-			//print_r($genre_array_others);
+			// DEUXIEME BOUCLE = les membres qui ont le même genre :
 			foreach ($genre_array_others as $key => $genre_others) {
 				$other_user_id[] = ($genre_others['id_user']);
+
 			}
 		}
-		$shared_genre_nb = array_count_values ($other_user_id ); 
-		// ce dernier tableau nous intéresse car il a ET les user id ET le nombre de répétitions 
+		// CALCUL DU NOMBRE DE GENRES EN COMMUN
 
+		$shared_genre_nb = array_count_values ($other_user_id ); 
+
+		// ce dernier tableau nous intéresse car il a ET les user id ET le nombre de répétitions 
 		$other_user_id = array_unique($other_user_id);
 		foreach ($other_user_id as $key => $value) {
 			if($value != $id_user) { // on n'a pas besoin d'afficher le profil en cours
@@ -184,7 +187,6 @@ class ProfilController extends Controller
 					'userInfo' => $sharedUserInfo,
 					'userLocation' => $sharedUserLocation,
 					'shared_genre_nb' => $sharedUser_genre_nb ,
-
 					);
 
 			}

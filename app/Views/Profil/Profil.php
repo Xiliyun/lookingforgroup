@@ -136,8 +136,8 @@ if ($id_user == $w_user['id_user']) {
       <?php elseif (isset($isRequestReceived) && $isRequestReceived): ?>
           <form method="POST" class="hoverable">
             <button type="submit" class="btn btn-primary btn-info btn-demande-reçue" name="accepter" value="<?=$id_user?>"> 
-              <span class="hover"><?= $username ?> vous a envoyé une demande d'ami </span>
-              <span class="normal">Accepter la demande</span>
+              <span class="normal"><?= $username ?> vous a envoyé une demande d'ami </span>
+              <span class="hover">Accepter la demande</span>
             </button>
           </form>
       <?php else: ?>
@@ -317,10 +317,9 @@ if ($id_user == $w_user['id_user']) {
         <h2> Suggestion d'amis </h2>
        <?php if (!empty($sharedGenreFav)): ?>
             <p><?=$username ?>, ces personnes partagent les mêmes goûts en jeux que vous !</p>
-
+            
             <?php foreach ($sharedGenreFav as $shared): ?>
               <?php 
-
               // traitement des variables
                 if (empty($shared['userInfo']['user_avatar']) && ($shared['user']['gender'] == "m")){
                   $user_avatar = $this->assetUrl('img/avatar_man.svg');
@@ -347,7 +346,7 @@ if ($id_user == $w_user['id_user']) {
 
                           <!-- Le lien sera le profil de l'utilisateur -->
 
-                              <a class="thumbnail pull-left" href="<?= $this->url('profil_user', ['id' => $shared['user']['id_user']]) ?>">
+                              <a class="thumbnail" href="<?= $this->url('profil_user', ['id' => $shared['user']['id_user']]) ?>">
                               <img class="media-object" title ="user default avatar male" alt="user default avatar male" src="<?=$user_avatar?>">
                               </a>
                               <div class="media-body">
