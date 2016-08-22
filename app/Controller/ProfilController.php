@@ -161,7 +161,7 @@ class ProfilController extends Controller
 		foreach ($userGenreFav as $key => $genre) {
 			$id_genre = $genre['id_genre'];
 			$genre_name = $genre['genre_name'];
-
+			//selection random
 			$genre_array_others = $dbGenre->findUserGenreFavByGenre($id_genre);
 			//print_r($genre_array_others);
 			foreach ($genre_array_others as $key => $genre_others) {
