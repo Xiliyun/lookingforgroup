@@ -135,7 +135,7 @@ class InscriptionController extends Controller {
 				$errors['lastname'] = 'Votre nom est trop long !(45 caractères max)';
 			}
 			else if(!ctype_alpha($lastname)) {
-				$errors['lastname'] = 'votre prénom ne peut contenir ni de caractères spéciaux, ni de chiffres, ni d\'espace';
+				$errors['lastname'] = 'votre nom ne peut contenir ni de caractères spéciaux, ni de chiffres, ni d\'espace';
 			}
 
 			//verification mot de passe

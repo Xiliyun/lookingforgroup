@@ -29,14 +29,14 @@
   
   <body>
     
-  
+  <div class="wrapper">
+
   <!-- NAV DE HAUT -->
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <?= $this->insert('templates/header/main') ?>
     </div>
   </nav>
-
 
 <div class="container">
 
@@ -141,7 +141,7 @@
 
   <?= $this->insert('templates/footer/chat/chat') ?>
 
-
+</div> <!-- END WRAPPER -->
   <footer>
     <div class="container">
       <div class="row">

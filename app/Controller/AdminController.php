@@ -150,6 +150,13 @@ class AdminController extends Controller {
 		$security = new AuthorizationModel;
 		$security->isGranted(1);
 
+		//Vérification si l'utilisateur est un admin
+		$dbAdmin= new AdminModel;
+		$dbAdmin->setTable('user');
+
+		$admin= $dbAdmin->find('role');
+		$this->allowTo($admin='1');
+
 		$errors ="";
 		if($_POST) {
 
