@@ -33,7 +33,7 @@ class GamingModel extends \W\Model\Model {
 		}
 		
 
-		$sql = 'SELECT user_genre_fav.id_user, user_genre_fav.id_genre, game_all_genre.*  FROM '  . $this->table .  ', game_all_genre WHERE user_genre_fav.id_genre = ' . $id_genre . ' AND user_genre_fav.id_genre =  game_all_genre.id_genre ';
+		$sql = 'SELECT user_genre_fav.id_user, user_genre_fav.id_genre, game_all_genre.*  FROM '  . $this->table .  ', game_all_genre WHERE user_genre_fav.id_genre = ' . $id_genre . ' AND user_genre_fav.id_genre =  game_all_genre.id_genre ORDER BY RAND() limit 10';
 		$sth = $this->dbh->prepare($sql);
 		$sth->execute();
 
