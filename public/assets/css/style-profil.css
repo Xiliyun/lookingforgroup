@@ -1,15 +1,35 @@
 
 .container .profil-titre h1 {
   display: inline-block;
-  color : #eee;
+  color : #292F36;
+}
+
+/****************************************************************************************/
+/*style des boutons ajout ami*/
+
+
+/*Style des boutons au survol*/
+.btn-demande-envoyee.btn-ami.btn-demande-reçuee {
+  cursor:default;
+  color:#000;
+  text-decoration:none;
+}
+.hoverable .hover {
+  display:none;
+}
+.hoverable:hover .normal {
+  display:none;
+}
+.hoverable:hover .hover {
+  display:inline;  /* CHANGE IF FOR BLOCK ELEMENTS */
 }
 
 
 
 
-///////////////////////////////////////////////////////////////////////////////
 
-
+/****************************************************************************************/
+/*style de la page profil*/
 
 /* Profile container */
 .profile {
@@ -45,7 +65,7 @@
 }
 
 .profile-userinfo-username {
-  color: #5a7391;
+  color: #6fb4a8;
   font-size: 1.6em;
   font-weight: 600;
   margin-bottom: 7px;
@@ -53,7 +73,7 @@
 
 .profile-userinfo-info {
   text-transform: uppercase;
-  color: #5b9bd1;
+  color: #616161;
   font-size: 12px;
   font-weight: 600;
   margin-bottom: 15px;
@@ -70,6 +90,8 @@
   font-weight: 600;
   padding: 6px 15px;
   margin-right: 5px;
+
+  width : 100%;
 
 }
 
@@ -90,7 +112,7 @@
 }
 
 .profile-usermenu ul li a {
-  color: #93a3b5;
+  color: #616161;
   font-size: 14px;
   font-weight: 400;
 }
@@ -101,11 +123,13 @@
 }
 
 .profile-usermenu ul li a:hover {
-  background-color: #fafcfd;
-  color: #5b9bd1;
+  color: #6fb4ad;
+  background-color: #f6f9fb;
+  border-left: 2px solid #47d9bf;
+  margin-left: -2px;
 }
 
-.profile-usermenu ul li.active {
+/*.profile-usermenu ul li.active {
   border-bottom: none;
 }
 
@@ -115,7 +139,7 @@
   border-left: 2px solid #5b9bd1;
   margin-left: -2px;
 }
-
+*/
 
 
 
@@ -132,24 +156,17 @@
 
 
   background-color: #FAFAFA;
-  color: #616161;
+  color: #292F36;
 }
 
 .profile-content h2 {
-  color: #5b9bd1;
+  color: #6fb4a8;
 }
 
+/****************************************************************************************/
 
 
-
-///////////////////////////////////////////////////////////////////////////////
-
-
-
-
-footer {
-  text-align: center;
-    min-height: 30px;
-    width: 100%;
-    padding-top: 50px;
+/*AFFICHAGE DES JEUX*/
+.list-group-horizontal .list-group-item {
+    display: inline-block;
 }

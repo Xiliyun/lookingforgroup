@@ -1,4 +1,5 @@
 <!-- boutton de collapse -->
+
   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
@@ -28,13 +29,28 @@
 
 		<!-- navigation droite -->
     	<ul class="nav navbar-nav navbar-right">
+    	<!-- MENU ADMIN -->
     		<?php if($w_user['role'] == 1): // si l'utilisateur est admin ?>
 			<li><a href="<?= $this->url('admin_dashboard') ?>">Admin</a></li> 
     		<?php endif; ?>
+		<!-- AFFICHAGE NOTIFICATIONS -->
 
-    		<!-- <li><p class="navbar-text">Espace membre : </p></li> -->    		
 		<li class="dropdown">
-		<!-- A faire : afficher nom de l'utilisateur -->
+
+        	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o" aria-hidden="true"></i></a>
+			<ul class="dropdown-menu notifications-dropdown">
+				<!-- ici on affichera les notifications -->
+				CA NE MARCHE PAAAAAAAAAaaaaAaaAaaAgrhghdfhgoigjdfigjxohgS
+			<?php print_r($new_notifications) ?>
+	        </ul>
+
+
+		</li>
+
+
+
+		<li class="dropdown">
+		<!-- TODO optionnel : afficher nom de l'utilisateur -->
 
         	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Espace membre </b> <span class="caret"></span></a>
 			<ul class="dropdown-menu">

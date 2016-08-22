@@ -1,0 +1,25 @@
+table {
+	margin:70px 30px;
+	width:70%;
+
+}
+
+.containerbutton{
+	width:70%;
+	margin-top:70px;
+	margin-left:125px;
+}
+
+#tetetableau {
+	font-weight:bold;
+}
+
+#legendtableau {
+	margin-top:20px;
+}
+
+.form-horizontal{
+	padding-right:60px;
+	padding-left:60px;
+}
+

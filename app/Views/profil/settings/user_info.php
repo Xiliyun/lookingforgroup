@@ -137,7 +137,7 @@
 					</div>
 
 					<div class="form-group">
-						<div>Votre âge : <?= $age ?></div>
+						<div>Vous êtes lvl : <?= $age ?></div>
 
 
 					</div>

@@ -13,6 +13,7 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+  <!-- FONT AWESOME -->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
       <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
       <!--[if lt IE 9]>
@@ -22,6 +23,7 @@
       <link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>"> 
       <link rel="stylesheet" href="<?= $this->assetUrl('css/style-menu.css') ?>"> 
       <link rel="stylesheet" href="<?= $this->assetUrl('css/style-settings.css') ?>"> 
+      <link rel="stylesheet" href="<?= $this->assetUrl('css/style-chat.css') ?>"> 
 
   </head>
   
@@ -56,6 +58,8 @@
 <?= $this->section('dashboard_section_account-info') ?>
 
 <?= $this->section('dashboard_section_user-info') ?>
+
+<?= $this->section('dashboard_section_user-gaming') ?>
 
 
    <!-- 
@@ -135,20 +139,30 @@
 
 
 
+  <?= $this->insert('templates/footer/chat/chat') ?>
+
+
+  <footer>
+    <div class="container">
+      <div class="row">
+          <?= $this->insert('templates/footer/simple') ?>
+      </div>
+    </div>
+  </footer>
 
 
 
-<?= $this->section('customScript') ?>
 
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
 <!-- Script pour le choix de la ville -->
 <script type="text/javascript" src="http://api.geonames.org/export/geonamesData.js?username=estheremiliefranck"></script>
-  <script src="<?= $this->assetUrl('js/inscription/pwstrength-bootstrap-2.0.1.js') ?>"></script>
+<script src="<?= $this->assetUrl('js/inscription/pwstrength-bootstrap-2.0.1.js') ?>"></script>
 
-  <script src="<?= $this->assetUrl('js/inscription/jsr_class.js') ?>"></script>
-  <script src="<?= $this->assetUrl('js/inscription/inscription.js') ?>"></script>  <!-- my script -->
+<script src="<?= $this->assetUrl('js/inscription/jsr_class.js') ?>"></script>
+<script src="<?= $this->assetUrl('js/inscription/inscription.js') ?>"></script>  <!-- my script -->
+<?= $this->section('customScript') ?>
 
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
@@ -156,5 +170,10 @@
 
 <!-- mon script pour les settings -->
 <script src="<?= $this->assetUrl('js/profil/profil.js') ?>"></script>
+
+<!-- script du chat
+ -->
+ <script src="<?= $this->assetUrl('js/chat/chat.js')?>"></script>
+
 </body>
 </html>

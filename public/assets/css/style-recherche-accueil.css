@@ -1,0 +1,48 @@
+
+
+
+#rechercheForm {
+	/*min-width:95%;*/
+	margin:15px auto;
+
+}
+
+.row {
+	min-width:95%;
+
+
+}
+/*
+
+.row .col-md-10{
+	margin:70px 70px 10px 70px; 
+
+}*/
+
+#containerAccueil{
+	min-width:95%;
+	margin:15px auto;
+}
+
+/*COLONNE DROITE : RESULTAT DES RECHERCHES ET AFFICHAGE DES THUMBNAILS*/
+.thumbnail.resultat-recherche-profil {
+
+}
+.thumbnail>img {
+	/*max-width: 100%;*/
+
+}
+
+.thumbnail {
+  height: 200px;
+}
+.img-responsive {
+	max-height: 150px;
+}
+
+
+
+/* STYLE DE L'ACCUEIL */
+.thumb {
+    margin-bottom: 30px;
+}
