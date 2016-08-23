@@ -27,7 +27,6 @@ class AdminController extends Controller {
 		$user = $db->find($id_user);
 		//UPDATE DE LA BDD
 		if (isset($_POST['modifier'])) {
-			$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 			$data= array(
 				'username'	=> $_POST['username'],
 				'firstname'	=> $_POST['firstname'],
@@ -35,13 +34,22 @@ class AdminController extends Controller {
 				'email' => $_POST['email'],
 				'gender' => $_POST['gender'],
 				'role' =>$_POST['role'],
+			);	
+			$db->update($data, $id);
+			$this->redirectToRoute('gestion_membres');
+	
+		}
+		//UPDATE DU MOT DE PASSE (A PART)
+		if (isset($_POST['modifierMdp'])) {
+			$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+			$data= array(
 				'password' =>$password,
 			);	
 			$db->update($data, $id);
 			$this->redirectToRoute('gestion_membres');
 	
 		}
-		$this->show('admin/modifier_membre', ['user'=>$user]);
+		$this->show('Admin/modifier_membre', ['user'=>$user]);
 	}
 	public function supprimer_membre($id){
 		$security = new AuthorizationModel;
@@ -72,7 +80,7 @@ class AdminController extends Controller {
 		$dbAdmin->setTable('user');
 		$admin= $dbAdmin->find('role');
 		$this->allowTo($admin='1');
-		$this->show('admin/dashboard');
+		$this->show('Admin/dashboard');
 	}
 
 	public function gestion_membres() {
@@ -90,7 +98,7 @@ class AdminController extends Controller {
 		$membres=$dbAdmin->findAll($orderBy="username", $orderDir="ASC");
 		
 
-		$this->show('admin/gestion_membres', ['membres'=>$membres]);
+		$this->show('Admin/gestion_membres', ['membres'=>$membres]);
 	}
 
 	public function gestion_news() {
@@ -136,7 +144,7 @@ class AdminController extends Controller {
 		
 
 			
-		$this->show('admin/gestion_news');
+		$this->show('Admin/gestion_news');
 	}
 
 
@@ -203,7 +211,7 @@ class AdminController extends Controller {
 
 
 
-		$this->show('admin/genre', ['errors' => $errors ]);
+		$this->show('Admin/genre', ['errors' => $errors ]);
 	}
 
 
