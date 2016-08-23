@@ -174,6 +174,8 @@
 <!-- script du chat
  -->
  <script src="<?= $this->assetUrl('js/chat/chat.js')?>"></script>
+ <!-- script des notifications -->
+<script src="<?= $this->assetUrl('js/notifications/notifications.js')?>"></script>
 
 </body>
 </html>

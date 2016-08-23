@@ -1,0 +1,41 @@
+SQL BETWEEN $age_depart AND $age_fin
+AGE DE DEPART + age de fin 
+
+=> DONE
+
+
+NOTIFICATION
+déclencher une notification sur une action
+
+Table NOTIFICATIONS
+id_notification, détails_notifications (un texte qui contient les détails de la notification), date (datetime),
+ex: détails (nouvelle demande d'amis)
+Table notification membres
+id_notification_membre, id_notification, id_membre, status (o = non lu, 1 = lu)
+
+ensuite on récupère la notification avec une checkNotifications où le statut est à zéro et dont l'id membre correspond au membre connecté.
+
+=> count() et retourne le nombre sur l'objet retourné
+
+
+=> s'il a cliqué sur le bouton "notifications", update notifications status à 1.
+
+
+
+
+TODO : ajouter un lien dans le chat vers le profil de l'tilisateur qui parle
+
+//////////////
+
+SELECT TOUS LES MEMBRES QUI 
+tous les genres de mon membre
+puis tous les membres qui ont le même genre
+
+IN WHERE SELET * FROM 
+
+
+boucle dans une boucle => parcourir la liste de tous les jeux que le membre aime
+Dans cette boucle, je récupère pour chaque type de jeu dans un tableau la liste des membres qui aiment le meme jeu (en cours dans la boucle)
+refaire pour chaque genre
+
+Au final afficher la liste par type de genre le nombre d'utilisateurs qui aiment les mêmes jeux

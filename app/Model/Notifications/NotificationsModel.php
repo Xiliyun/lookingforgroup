@@ -4,6 +4,8 @@ namespace Model\Notifications;
 
 use Datetime;
 
+
+
 class NotificationsModel extends \W\Model\Model {
 
 
@@ -74,6 +76,26 @@ class NotificationsModel extends \W\Model\Model {
 		}
 
 
+	public function getNotifications ($id) {
+			$this->setTable('user_notification');
+			$this->setPrimaryKey('id_user_notification');
+
+			if (!is_numeric($id)){
+				return false;
+			}
+
+			//$sql = 'SELECT * FROM ' . $this->table . ', WHERE id_user = :id AND status = "0" ';
+			//AND user_notification.status = "0"
+			$sql = 'SELECT * FROM user_notification, notification WHERE user_notification.id_user = :id AND notification.id_notification = user_notification.id_notification ORDER BY user_notification.id_notification DESC limit 20';
+
+			$sth = $this->dbh->prepare($sql);
+			$sth->bindValue(':id', $id);
+			$sth->execute();
+
+			return $sth->fetchAll();
+
+	}
+
 	public function checkNotifications ($id) {
 			$this->setTable('user_notification');
 			$this->setPrimaryKey('id_user_notification');
@@ -83,16 +105,32 @@ class NotificationsModel extends \W\Model\Model {
 			}
 
 			//$sql = 'SELECT * FROM ' . $this->table . ', WHERE id_user = :id AND status = "0" ';
-			$sql = 'SELECT * FROM user_notification, notification WHERE user_notification.id_user = :id AND user_notification.status = "0" AND notification.id_notification = user_notification.id_notification ';
+			//AND user_notification.status = "0"
+			$sql = 'SELECT * FROM user_notification, notification WHERE user_notification.id_user = :id AND notification.id_notification = user_notification.id_notification AND user_notification.status = "0" limit 20';
 
 			$sth = $this->dbh->prepare($sql);
 			$sth->bindValue(':id', $id);
 			$sth->execute();
 
-			return $sth->fetch();
+			return $sth->fetchAll();
 
 	}
 
+	public function updateStatus($id) {
+			$this->setTable('user_notification');
+			$this->setPrimaryKey('id_user_notification');
+
+			if (!is_numeric($id)){
+				return false;
+			}
+
+			$sql = 'UPDATE ' . $this->table . ' SET status = "1" WHERE id_user ='.strip_tags($id) ;
+			$sth = $this->dbh->prepare($sql);
+			if(!$sth->execute()){
+				return false;
+			}
+			// update where id_user = $id
+	}
 
 }
 

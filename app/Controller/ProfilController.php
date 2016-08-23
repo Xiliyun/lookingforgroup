@@ -255,6 +255,8 @@ class ProfilController extends Controller
 		// récupération de la table amis DE L'UTILISATEUR CONNECTE / PRINCIPAL
 		//print_r($friends_array);
 
+		$notificationsDb = new notificationsModel;
+
 		////////////////////////////////////////////////////////////////////////////////
 		// STATUS = 0 // RECUPERATION DES REQUETES & AJOUT OU ANNULATION
 		////////////////////////////////////////////////////////////////////////////////
@@ -274,6 +276,22 @@ class ProfilController extends Controller
 			$friend_username = $friend_username['username'];
 
 			$dbUserFriends->acceptFriendRequest($id_connected_user, $id_friend);
+
+			// CREATION D'UNE NOTIFICATION
+				$url = $this->generateUrl('profil_friends', ['id' => $id_connected_user ]);
+				$details = "<a href='".$url."'>".$connected_user['username']." a accepté votre demande d'ami! !</a>";
+				$id_notification = $notificationsDb->newNotification($details, $stripTags = false);
+
+				// insertion dans la notification de l'utilisateur
+				$data = array(
+					'id_user_notification' => null,
+					'id_notification' => $id_notification['id_notification'],
+					'id_user' => $id_friend,
+					'status' => 0,
+					);
+
+				$notificationsDb->insertUserNewNotification($data);
+
 
 			$confirmation = 'accepted';
 			$this->redirectToRoute('profil_friendsConfirm', ['confirm' => $confirmation, 'id' => $id_connected_user, 'friend_username' => $friend_username]);
@@ -326,7 +344,7 @@ class ProfilController extends Controller
 			$dbUserFriends->deleteFriend($id_friend, $id_connected_user);
 
 			$confirmation = 'deleted';
-			$this->redirectToRoute('profil_profilConfirm', ['confirm' => $confirmation, 'id' => $id_connected_user, 'friend_username' => $friend_username]);
+			$this->redirectToRoute('profil_friendsConfirm', ['confirm' => $confirmation, 'id' => $id_connected_user, 'friend_username' => $friend_username]);
 
 		}
 

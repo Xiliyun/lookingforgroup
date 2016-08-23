@@ -22,6 +22,7 @@
       <link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>"> 
       <link rel="stylesheet" href="<?= $this->assetUrl('css/style-menu.css') ?>"> 
       <link rel="stylesheet" href="<?= $this->assetUrl('css/style-recherche-accueil.css') ?>"> 
+      <link rel="stylesheet" href="<?= $this->assetUrl('css/style-chat.css') ?>"> 
 
   </head>
   
@@ -46,6 +47,7 @@
 
     </div>
   </div> <!-- END WRAPPER -->
+  <?= $this->insert('templates/footer/chat/chat') ?>
 
  <footer>
     <div class="container">
@@ -59,6 +61,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <script src="<?= $this->assetUrl('js/recherche/recherche.js')?>"></script>
+<script src="<?= $this->assetUrl('js/chat/chat.js')?>"></script>
+
+<script src="<?= $this->assetUrl('js/notifications/notifications.js')?>"></script>
 
 </body>
 </html>
