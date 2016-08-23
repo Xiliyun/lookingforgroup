@@ -16,7 +16,8 @@
  
 
 .panel-body.msg-wgt-body  {
-	height: 600px;
+	height: 550px;
+	width: 450px;
 	overflow-y: scroll;
 }
 
