@@ -67,7 +67,7 @@ if ($id_user == $w_user['id_user']) {
   
 
     <!-- SIDEBAR USERPIC -->
-    <div class="profile-userpic" id="test">
+    <div class="profile-userpic" data-toggle="modal" data-target="#imageModal">
 
     <?php if (empty($userInfo['user_avatar']) && ($gender == "m")): ?>
       <img class="img-responsive center-block" title ="user default avatar male" alt="user default avatar male" src="<?= $this->assetUrl('img/avatar_man.svg') ?>">
@@ -79,12 +79,33 @@ if ($id_user == $w_user['id_user']) {
 
 
 
-
-
-
     </div>
     <!-- END SIDEBAR USERPIC -->
+    <!-- MODAL IMAGE -->
+                <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Photo de <?= $username ?></h4>
+                      </div>
+                      <div class="modal-body">
+                       
+                        <?php if (empty($userInfo['user_avatar']) && ($gender == "m")): ?>
+                          <img class="img-responsive center-block" title ="user default avatar male" alt="user default avatar male" src="<?= $this->assetUrl('img/avatar_man.svg') ?>">
+                        <?php elseif(empty($userInfo['user_avatar']) && ($gender == "f")): ?>
+                          <img class="img-responsive center-block" title ="user default avatar female" alt="user default avatar female" src="<?= $this->assetUrl('img/avatar_woman.svg') ?>">
+                        <?php else: ?>
+                          <img class="img-responsive center-block" alt="photo de <?= $username ?>" src="<?= $user_avatar ?>">
+                        <?php endif ?>
 
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
     <!-- SIDEBAR USER TITLE -->
     <div class="profile-userinfo">
@@ -98,12 +119,12 @@ if ($id_user == $w_user['id_user']) {
       <!-- gender -->
       <?php if($gender == "m") { echo "homme";} elseif($gender == "f") { echo "femme";}?>
       <!-- orientation -->
-      <?php if($orientation == "hetero"):?>
+      <!-- <?php if($orientation == "hetero"):?>
           <?php if($gender == "m"){echo " - hétérosexuel"; }elseif($gender == "f"){echo " - hétérosexuelle";} ?><?php endif; ?>
       <?php if($orientation == "homo"):?>
           <?php if($gender == "m"){echo " - homosexuel"; }elseif($gender == "f"){echo " - homosexuelle";} ?><?php endif; ?>
       <?php if($orientation == "bi"):?>
-          <?php if($gender == "m"){echo " - bisexuel"; }elseif($gender == "f"){echo " - bisexuelle";} ?><?php endif; ?>
+          <?php if($gender == "m"){echo " - bisexuel"; }elseif($gender == "f"){echo " - bisexuelle";} ?><?php endif; ?> -->
       </p>
 
       <p><?= $city .' - '. $cp ?></p>

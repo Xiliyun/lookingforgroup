@@ -10,7 +10,7 @@ $(document).ready(function() {
 	    $('#charNum').text(' vous avez atteint la limite de caractères authorisés !');
 	  } else {
 	    var char = max - len;
-	    $('#charNum').text(char + ' charactères restants');
+	    $('#charNum').text(char + ' caractères restants');
 	  }
 	});
 

@@ -368,33 +368,33 @@ class UserSettingsController extends Controller
 
 				$update = $dbUser->update($data, $id_connected_user, $stripTags = true);
 
-				if(empty($userInfo)) {
+				// if(empty($userInfo)) {
 
-						$data = array(
-							"id_user"				=> $id_connected_user,
-							"orientation"			=> $orientation,
-							"id_battlenet"			=> null,
-							"id_psn"				=> null,	
-							"id_lol"				=> null, 
-							"id_xbox_live"			=> null,	
-							"id_steam"				=> null, 
-							"description"			=> null, 
-							"user_avatar"			=> null	
-						);
-						$insert = $dbUserInfo->insert($data, $stripTags = true);
-						$confirmation = true; 
+				// 		$data = array(
+				// 			"id_user"				=> $id_connected_user,
+				// 			"orientation"			=> $orientation,
+				// 			"id_battlenet"			=> null,
+				// 			"id_psn"				=> null,	
+				// 			"id_lol"				=> null, 
+				// 			"id_xbox_live"			=> null,	
+				// 			"id_steam"				=> null, 
+				// 			"description"			=> null, 
+				// 			"user_avatar"			=> null	
+				// 		);
+				// 		$insert = $dbUserInfo->insert($data, $stripTags = true);
+				// 		$confirmation = true; 
 
-					}
-					else {
+				// 	}
+				// 	else {
 
-						$data = array(
-						"orientation"				=> $orientation,
-						);
+				// 		$data = array(
+				// 		"orientation"				=> $orientation,
+				// 		);
 
-						$update = $dbUserInfo->update($data, $id_connected_user, $stripTags = true);
+				// 		$update = $dbUserInfo->update($data, $id_connected_user, $stripTags = true);
 
-						$confirmation = true;
-					}
+				// 		$confirmation = true;
+				// 	}
 
 				$confirmation = true;
 				$this->redirectToRoute('profil_userInfoConfirm', ['confirm' => $confirmation]);

@@ -1,4 +1,6 @@
-
+.wrapper {
+	height: initial !important;
+}
 
 
 #rechercheForm {

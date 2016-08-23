@@ -33,9 +33,10 @@ class NotificationController extends Controller {
 		$all_notifications = $notificationsDb->getNotifications($id_connected_user);
 
 		// UPDATE DU STATUS QUAND ON HOVER LES NOTIFICATIONS
-		if (isset($_POST)) {
+		if ($_POST && $_POST['bonjour'] == 'hello') {
 			$notificationsDb->updateStatus($id_connected_user);
 		}
+
 
 
 

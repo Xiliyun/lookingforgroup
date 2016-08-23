@@ -27,7 +27,7 @@
   </head>
 <body>
 
-  <div id="wrapper">
+  <div class="wrapper">
       <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
           <div class="container">
               <?= $this->insert('templates/header/empty') ?>
