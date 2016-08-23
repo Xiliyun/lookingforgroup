@@ -206,7 +206,8 @@
 								<p class="help-block errors"><?php if(isset($errors["gender"])) echo $errors["gender"]; ?></p>
 
 						</div>
-			
+						<!-- SUPPRIME POUR RAISONS LEGALES -->
+					<!-- 
 						<div class="form-group">
 							<label for="orientation">Votre orientation sexuelle</label>
 								<select class="form-control" id="orientation" name="orientation">
@@ -217,7 +218,7 @@
 									<option value="bi" <?php if($orientation == "bi") echo "selected"; ?>><?php if($gender == "m"){echo "bisexuel"; }elseif($gender == "f"){echo "bisexuelle";} ?></option>
 
 								</select>
-						</div>
+						</div> -->
 						
 						<input type="submit" class="btn btn-default btn-block" name="modifierSexeOrientation" value="modifier">
 						

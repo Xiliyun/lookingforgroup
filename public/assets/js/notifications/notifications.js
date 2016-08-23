@@ -22,24 +22,26 @@ function updateStatus() {
 	$.ajax({
 		url: root_path+'/notifications',
 		type: 'POST',
-		data: {statut: '1'},
+		data: {statut: '1', bonjour : 'hello'},
 	});
 
 };
 
 
+$('#notifications').on('click', function(event) {
+	
 
-$('#notifications').on('hover', '.selector', function(event) {
-	event.preventDefault();
 	updateStatus();
+
+
+
 });
-
-
 
 
 function boot_notifications() {
 	get_notifications();
-	setInterval(get_notifications, 4000);
+
+	setInterval(get_notifications, 2000);
 
 }
 // INITIALISATION DE LA RECHERCHE

@@ -120,9 +120,9 @@ class InscriptionController extends Controller {
 			}else if(strlen($firstname) > 45) {
 				$errors['firstname'] = 'Votre prénom est trop long !(45 caractères max)';
 			}
-			else if(!ctype_alpha($firstname)) {
-				$errors['firstname'] = 'votre prénom ne peut contenir ni de caractères spéciaux, ni de chiffres, ni d\'espace';
-			} // ne marche pas
+			// else if(!ctype_alpha($firstname)) {
+			// 	$errors['firstname'] = 'votre prénom ne peut contenir ni de caractères spéciaux, ni de chiffres, ni d\'espace';
+			// } // ne marche pas
 
 
 			// verification lastname
@@ -134,9 +134,9 @@ class InscriptionController extends Controller {
 			}else if(strlen($lastname) > 45) {
 				$errors['lastname'] = 'Votre nom est trop long !(45 caractères max)';
 			}
-			else if(!ctype_alpha($lastname)) {
-				$errors['lastname'] = 'votre nom ne peut contenir ni de caractères spéciaux, ni de chiffres, ni d\'espace';
-			}
+			// else if(preg_match("/([a-zA-Z -])/", $lastname)) {
+			// 	$errors['lastname'] = 'votre nom ne peut contenir ni de caractères spéciaux, ni de chiffres, ni d\'espace';
+			// }
 
 			//verification mot de passe
 			if(empty($password)) {

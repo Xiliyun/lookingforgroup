@@ -66,15 +66,6 @@
 					</div> 
 				</div>
 				
-				
-			
-			<div class="form-group">	
-				<label class="col-md-4 control-label" for="lastname">Nom</label>  
-				<div class="col-md-4">
-					<input class="form-control input-md" id="lastname" name="lastname" type="text" placeholder="Nom" value="<?php if(isset($_POST["lastname"])) echo $_POST["lastname"]; ?>"> 
-					<p class="help-block errors"><?php if(isset($errors["lastname"])) echo $errors["lastname"]; ?></p>  
-				</div>  
-			</div>
 
 				
 
@@ -86,17 +77,26 @@
 					</div>   
 				</div>
 
-				  
+				
+			
+				<div class="form-group">	
+					<label class="col-md-4 control-label" for="lastname">Nom</label>  
+					<div class="col-md-4">
+						<input class="form-control input-md" id="lastname" name="lastname" type="text" placeholder="Nom" value="<?php if(isset($_POST["lastname"])) echo $_POST["lastname"]; ?>"> 
+						<p class="help-block errors"><?php if(isset($errors["lastname"])) echo $errors["lastname"]; ?></p>  
+					</div>  
+				</div>
+					  
 
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="gender">Civilité</label>
 					<div class=col-md-6>
 						<div class="form-group">
 							<label class="col-md-4 control-label">
-								<input  type="radio" id="gender" name="gender" value="m"> Homme
+								<input  type="radio" id="gender" name="gender" value="m" <?php if(isset($_POST["gender"]) && $_POST["gender"] == "m") echo "checked"; ?> > Homme
 							</label>
 							<label class="col-md-4 control-label">
-								<input  type="radio" id="gender" name="gender" value="f"> Femme
+								<input  type="radio" id="gender" name="gender" value="f" <?php if(isset($_POST["gender"]) && $_POST["gender"] == "f") echo "checked"; ?>> Femme
 							</label>
 
 						</div>
