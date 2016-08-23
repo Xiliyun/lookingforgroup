@@ -14,10 +14,6 @@
 					<label for="username" class="col-md-4 control-label">Pseudo</label>
 					<input name="username" value="<?php echo $user['username']?>" class="form-control input-md">	
 			
-			
-					<label for="password" class="col-md-4 control-label">Mot de passe</label>
-					<input name="password" type="password" value="*************" class="form-control input-md">
-			
 						
 					<label for="firstname" class="col-md-4 control-label">Prénom</label>
 					<input name="firstname" value="<?php echo $user['firstname']?>" class="form-control input-md">
@@ -40,6 +36,13 @@
 					<label class="col-md-4 control-label" for="rechercher"></label>
 					<input type="submit" name="modifier" class="btn btn-default btn-block">
 					
+			</form>
+
+			<form method="POST">
+					<label for="password" class="col-md-4 control-label">Mot de passe</label>
+					<input name="password" type="password" value="" class="form-control input-md">
+					<input type="submit" name="modifierMdp" class="btn btn-default btn-block">
+
 			</form>
 
 			</div>
